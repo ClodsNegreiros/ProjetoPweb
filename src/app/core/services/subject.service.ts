@@ -29,20 +29,18 @@ export class SubjectService {
   }
 
   getSubject(subjectId: number) {
-    console.log(this.getSubjects().pipe(
+    this.getSubjects().pipe(
       map((subjects) => subjects.find(subject => subject.id === subjectId))
-    ));
+    );
   }
 
   addSubject(subject: Subject): Observable<Subject> {
-    console.log(subject);
-    console.log(this.nextId)
     const subjectToAdd: Subject = {...subject, id: this.generateId()};
     return this.httpClient.post<Subject>(this.subjectEndpoint, subjectToAdd)
   }
 
   deleteSubject(subjectId: number | undefined): Observable<Object> {
-    return this.httpClient.delete(`${this.subjectEndpoint}/${subjectId}`)
+    return this.httpClient.delete(`${this.subjectEndpoint}/${subjectId}`);
   }
 
   searchSubjectById(subjectId: number): Observable<Subject> {

@@ -10,17 +10,21 @@ export const SubjectRoutes: Route[] = [
     component: SubjectComponent,
     children: [
       {
+        path: 'maintain-subject',
+        component: MaintainSubjectComponent
+      },
+      {
+        path: 'maintain-subject/:id',
+        component: MaintainSubjectComponent
+      },
+      {
         path: '',
         component: ListSubjectComponent
       },
-      {
-        path: 'maintain-list',
-        component: MaintainSubjectComponent
-      }
     ]
   },
   {
     path: ':id',
     component: DetailSubjectComponent
-  }
+  },
 ]

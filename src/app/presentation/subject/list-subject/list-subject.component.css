@@ -1,0 +1,8 @@
+section > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+td > button {
+  margin-right: 1rem;
+}

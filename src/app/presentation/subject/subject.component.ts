@@ -10,10 +10,4 @@ import { Subject } from 'src/app/domain/entities/Subject';
 export class SubjectComponent {
 
   constructor(private subjectService: SubjectService) {}
-
-  addSubject(subject: Subject) {
-    this.subjectService.addSubject(subject).subscribe(
-      subject => console.log(subject)
-    )
-  }
 }

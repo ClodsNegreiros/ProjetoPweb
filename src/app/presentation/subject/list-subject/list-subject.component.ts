@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { IMenuActions } from 'src/app/core/components/menu/menu.component';
 import { SubjectService } from 'src/app/core/services/subject.service';
 import { Subject } from 'src/app/domain/entities/Subject';
@@ -28,7 +29,10 @@ export class ListSubjectComponent {
     }
   ]
 
-  constructor( private subjectService: SubjectService) {}
+  constructor(
+    private subjectService: SubjectService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.subjectService.getSubjects().subscribe(
@@ -39,11 +43,36 @@ export class ListSubjectComponent {
   }
 
   deleteSubject(subjectId: number) {
-    this.subjectService.deleteSubject(subjectId).subscribe((resposta) => {
-      const indxARemover = this.subjects.findIndex(value => value.id === subjectId);
-      if (indxARemover > -1) {
-        this.subjects.splice(indxARemover, 1);
+    this.subjectService.deleteSubject(subjectId).subscribe(
+      () => {
+        const indexToRemove = this.subjects.findIndex(value => value.id === subjectId);
+        if (indexToRemove > -1) {
+          this.subjects.splice(indexToRemove, 1);
+          this._snackBar.open(
+            `A matéria foi excluída com sucesso.`,
+            'Ok',
+            {
+              horizontalPosition: 'right',
+              verticalPosition: 'top',
+              duration: 4000,
+            }
+          );
+        }
+
+        window.location.reload();
+      },
+      (error) => {
+        console.error('Erro ao excluir a matéria', error);
+        this._snackBar.open(
+          `Erro ao excluir a matéria. Por favor, tente novamente.`,
+          'Ok',
+          {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            duration: 4000,
+          }
+        );
       }
-    })
+    );
   }
 }
