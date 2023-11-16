@@ -20,10 +20,6 @@ export class SubjectService {
     private httpClient: HttpClient,
   ) {}
 
-  private generateId(): number {
-    return this.nextId ++;
-  }
-
   getSubjects(): Observable<Subject[]> {
     return this.httpClient.get<Subject[]>(this.subjectEndpoint);
   }
@@ -31,6 +27,21 @@ export class SubjectService {
   getSubject(subjectId: number) {
     this.getSubjects().pipe(
       map((subjects) => subjects.find(subject => subject.id === subjectId))
+    );
+  }
+
+  private generateId(): any {
+    this.getSubjects().pipe(
+      map((subjects) => {
+        const maxId = subjects.reduce((max, subject) => {
+          if (subject && subject.id !== undefined) {
+            return subject.id > max ? subject.id : max;
+          }
+          return max;
+        }, 0);
+
+        return (maxId || 0) + 1;
+      })
     );
   }
 
