@@ -37,6 +37,7 @@ export class MaintainSubjectComponent {
   }
 
   ngOnInit(): void {
+    this.checkEditMode();
     this.teachers = this._teacherService.getTeachers();
   }
 

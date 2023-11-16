@@ -1,8 +1,7 @@
 <section>
   <mat-card>
       <mat-card-header>
-          <mat-card-title>Title</mat-card-title>
-          <mat-card-subtitle>Subtitle</mat-card-subtitle>
+          <mat-card-title class="color-dark-grey">Cadastro de matéria:</mat-card-title>
       </mat-card-header>
 
       <mat-card-content>
@@ -37,7 +36,7 @@
             </div>
 
             <button mat-raised-button color="primary">
-              Cadastrar!
+             {{ !isEditMode ?  'Cadastrar!' : 'Atualizar matérias!'}}
             </button>
           </form>
       </mat-card-content>
