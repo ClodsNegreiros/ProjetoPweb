@@ -1,0 +1,14 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-toolbar > div {
+  display: flex;
+}
+
+mat-toolbar > div > h5 {
+  margin-right: 1rem;
+}
+

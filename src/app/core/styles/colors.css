@@ -1,0 +1,59 @@
+:root {
+  --bg-dark-grey:  #222831;
+  --bg-light-grey: #393E46;
+  --bg-orange-red: #D65A31;
+  --bg-pinkish-white: #EEEEEE;
+
+  --color-dark-grey:  #222831;
+  --color-light-grey: #393E46;
+  --color-orange-red: #D65A31;
+  --color-pinkish-white: #EEEEEE;
+}
+
+.color-dark-grey {
+  color: #222831;
+}
+
+.color-light-grey {
+  color: #393E46;
+}
+
+.color-orange-red {
+  color: #D65A31;
+}
+
+.color-pinkish-white {
+  color: #EEEEEE;
+}
+
+.bg-dark-grey {
+  background-color: #222831;
+}
+
+.bg-light-grey {
+  background-color: #393E46;
+}
+
+.bg-orange-red {
+  background-color: #D65A31;
+}
+
+.bg-pinkish-white {
+  background-color: #EEEEEE;
+}
+
+.color-dark-grey {
+  color: #222831;
+}
+
+.color-light-grey {
+  color: #393E46;
+}
+
+.color-orange-red {
+  color: #D65A31;
+}
+
+.color-pinkish-white {
+  color: #EEEEEE;
+}
