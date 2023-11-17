@@ -1,10 +1,11 @@
 import { ITeacher, Teacher } from "./Teacher";
+import { IStudent,Student } from "./Student";
 
 export interface ISubject {
   id?: number;
   name: string;
   teacher: ITeacher;
-  // Student: Student[]
+   Student?: IStudent[]
 }
 
 export class Subject {

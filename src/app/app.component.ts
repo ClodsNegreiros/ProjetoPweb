@@ -19,6 +19,10 @@ export class AppComponent {
     {
       icon: 'groups',
       text: 'Aluno(s)'
+    },{
+      icon:'groups',
+      text: "Professor(es)",
+      routerLinkName: "/teacher"
     }
   ]
 }

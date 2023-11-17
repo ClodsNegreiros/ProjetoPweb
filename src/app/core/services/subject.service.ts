@@ -14,7 +14,7 @@ export class SubjectService {
   subjectEndpoint: string = 'http://localhost:3000/subjects';
 
   subjects: Subject[] = [];
-  private nextId: number = 1;
+  //private nextId: number = 1;
 
   constructor(
     private httpClient: HttpClient,
@@ -25,29 +25,13 @@ export class SubjectService {
   }
 
   getSubject(subjectId: number) {
-    this.getSubjects().pipe(
+   this.getSubjects().pipe(
       map((subjects) => subjects.find(subject => subject.id === subjectId))
     );
-  }
-
-  private generateId(): any {
-    this.getSubjects().pipe(
-      map((subjects) => {
-        const maxId = subjects.reduce((max, subject) => {
-          if (subject && subject.id !== undefined) {
-            return subject.id > max ? subject.id : max;
-          }
-          return max;
-        }, 0);
-
-        return (maxId || 0) + 1;
-      })
-    );
-  }
+  }   
 
   addSubject(subject: Subject): Observable<Subject> {
-    const subjectToAdd: Subject = {...subject, id: this.generateId()};
-    return this.httpClient.post<Subject>(this.subjectEndpoint, subjectToAdd)
+    return this.httpClient.post<Subject>(this.subjectEndpoint, subject);
   }
 
   deleteSubject(subjectId: number | undefined): Observable<Object> {
