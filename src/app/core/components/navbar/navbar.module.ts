@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarComponent } from './navbar.component';
 import { MenuModule } from '../menu/menu.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { FlexLayoutModule } from '@angular/flex-layout/module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     CommonModule,
     MenuModule,
     MatToolbarModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FlexLayoutModule
   ],
   exports: [
     NavbarComponent

@@ -13,6 +13,14 @@ const routes: Routes = [
   {
     path:"teacher",
     loadChildren: ()=>import("../app/presentation/teacher/teacher.module").then(module=>module.TeacherModule)
+  },
+  {
+    path:"login",
+    loadChildren:()=>import("../app/presentation/login/login.module").then(module=>module.LoginModule)
+  },
+  {
+    path:"**",
+    redirectTo:''
   }
 ]
 

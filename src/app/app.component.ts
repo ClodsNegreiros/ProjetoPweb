@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { IMenuActions } from './core/components/menu/menu.component';
 
 @Component({
   selector: 'app-root',
@@ -9,20 +8,6 @@ import { IMenuActions } from './core/components/menu/menu.component';
 })
 export class AppComponent {
   title = 'RegistrationSystem';
-
-  menuActions: IMenuActions[] = [
-    {
-      icon: 'library_books',
-      text: 'Matéria(s)',
-      routerLinkName: '/subject'
-    },
-    {
-      icon: 'groups',
-      text: 'Aluno(s)'
-    },{
-      icon:'groups',
-      text: "Professor(es)",
-      routerLinkName: "/teacher"
-    }
-  ]
+  LinkSignup="login/signup";
+  LinkSignin="login";
 }

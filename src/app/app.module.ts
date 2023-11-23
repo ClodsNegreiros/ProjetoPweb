@@ -9,6 +9,8 @@ import { TeacherComponent } from './presentation/teacher/teacher.component';
 import { ListTeacherComponent } from './presentation/teacher/list-teacher/list-teacher.component';
 import { DetailTeacherComponent } from './presentation/teacher/detail-teacher/detail-teacher.component';
 import { MaintainTeacherComponent } from './presentation/teacher/maintain-teacher/maintain-teacher.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { LoginComponent } from './presentation/login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,17 @@ import { MaintainTeacherComponent } from './presentation/teacher/maintain-teache
     ListTeacherComponent,
     DetailTeacherComponent,
     MaintainTeacherComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NavbarModule
+    NavbarModule,
+    FlexLayoutModule
+  ],
+  exports:[
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
