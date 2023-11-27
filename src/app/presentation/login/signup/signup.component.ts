@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { User } from 'src/app/domain/entities/User';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit{
 
   atores : string[]= ["Professor","Aluno"] 
 
@@ -19,10 +19,6 @@ export class SignupComponent {
   isEditMode: boolean = false;
   subjectId!: any;
 
-  email: FormControl;
-  password:FormControl;
-  ator:FormControl;
-
   constructor(
     private _formBuilder: FormBuilder,
     private _userservice: UserService,
@@ -30,14 +26,11 @@ export class SignupComponent {
     private _router: Router,
     private _route: ActivatedRoute
   ) {
-    this.email = new FormControl('', [Validators.required, Validators.email]);
-    this.password= new FormControl("",[Validators.required,Validators.minLength(6)])
-    this.ator= new FormControl('', [Validators.required]);
     
     this.LoginForm= this._formBuilder.group({
-      email: ['', this.email],
-      password: ['', this.password],
-      ator:['',this.ator]
+      email: ['',Validators.required],
+      password: ['', Validators.required,Validators.minLength(6)],
+      ator:['',Validators.required]
     });
    
   }
@@ -55,29 +48,27 @@ export class SignupComponent {
     })
   }
 
-  errormessage():string{
-    if(this.LoginForm.hasError('required')){
-      return 'Preencha o campo solicitado'
-    }
-    else if(this.LoginForm.hasError('minlenght')){
-      return 'preencha ao menos 6 digitos na senha'
-    }
-    return ''
-  }
+
+
+
 
 
   async onSubmit(): Promise<void> {
-    const { email ,senha,ator}= this.LoginForm.value;
+    this.validateForm();
+    if(this.LoginForm.invalid){
+      return;
+    }
+    const { email ,password,ator}= this.LoginForm.value;
     const user= new User( {
       email: email,
-      senha:senha,
+      senha:password,
       isaluno: ator==="aluno" ? true : false 
-        }
+        } 
       );
-      window.alert(ator);
+      console.log(password);
         this._userservice.addeuser(user).subscribe((user:User) => {
           this._snackBar.open(
-            `o Usuário foi cadastrado com sucesso`,
+            `o Usuário foi cadastrado com sucesso! Faça seu Login.`,
             'Ok',
             {
               horizontalPosition: 'right',
@@ -85,6 +76,7 @@ export class SignupComponent {
               duration: 4000,
             }
           );
+          this._router.navigate(['/login']);
         },
         (error) => {
           this._snackBar.open(

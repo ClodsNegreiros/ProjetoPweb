@@ -36,4 +36,8 @@ export class UserService {
     return this.httpclient.delete<User>(`${this.UserEndpoint}/${id}`);
   }
 
+  getuserbyemail(email:string):Observable<User>{
+    return this.httpclient.get<User>(`${this.UserEndpoint}/?email=${email}`);
+  }
+
 }

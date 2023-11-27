@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuModule } from 'src/app/core/components/menu/menu.module';
 import {FlexLayoutModule} from '@angular/flex-layout/module';
 import { UserService } from 'src/app/core/services/user.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { UserService } from 'src/app/core/services/user.service';
     FlexLayoutModule
   ],
   providers:[
-    UserService
+    UserService,
+    AuthService
   ]
 })
 export class LoginModule { }

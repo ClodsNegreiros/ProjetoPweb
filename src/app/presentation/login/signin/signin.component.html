@@ -11,8 +11,8 @@
               name="email"
               formControlName="email"
             >
-            <mat-error>
-             {{errormessage}}
+            <mat-error *ngIf="this.LoginForm.get('email')?.dirty && this.LoginForm.get('email')?.hasError('required')">
+             Campo Obrigatório
             </mat-error>
           </mat-form-field>
   
@@ -23,13 +23,13 @@
               name="password"
               formControlName="password"
             >
-            <mat-error>
-              {{errormessage}}
+            <mat-error *ngIf="this.LoginForm.get('password')?.dirty && this.LoginForm.get('password')?.hasError('required')">
+             Campo Obrigatório
             </mat-error>
           </mat-form-field>
         </div>
   
-        <button type="submit" mat-raised-button color="primary">
+        <button mat-raised-button color="primary">
           Entrar
         </button>
       </form>

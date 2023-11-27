@@ -11,8 +11,8 @@
                 name="email"
                 formControlName="email"
               >
-              <mat-error>
-               {{errormessage}}
+              <mat-error *ngIf="LoginForm.get('email')?.dirty && LoginForm.get('email')?.hasError('required')">
+                Campo obrigatório
               </mat-error>
             </mat-form-field>
     
@@ -23,9 +23,12 @@
                 name="password"
                 formControlName="password"
               >
-              <mat-error>
-                {{errormessage}}
+              <mat-error *ngIf="LoginForm.get('password')?.dirty && LoginForm.get('password')?.hasError('required') ">
+                Campo obrigatório
               </mat-error>
+              <mat-error *ngIf="LoginForm.get('password')?.dirty && LoginForm.get('password')?.hasError('minlength')">
+                Mínimo de 6 dígitos
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field>
@@ -34,6 +37,9 @@
                   <mat-option value="aluno">{{atores[1]}}</mat-option>
                   <mat-option  value="professor">{{atores[0]}}</mat-option>
                 </mat-select>
+                <mat-error *ngIf="LoginForm.get('ator')?.dirty && LoginForm.get('ator')?.hasError('required')">
+                  Campo obrigatório
+                </mat-error>
               </mat-form-field>
           </div>
     
