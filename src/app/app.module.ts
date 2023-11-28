@@ -10,11 +10,8 @@ import { ListTeacherComponent } from './presentation/teacher/list-teacher/list-t
 import { DetailTeacherComponent } from './presentation/teacher/detail-teacher/detail-teacher.component';
 import { MaintainTeacherComponent } from './presentation/teacher/maintain-teacher/maintain-teacher.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LoginComponent } from './presentation/login/login.component';
 import { HomeComponent } from './presentation/home/home.component';
-import { canActivateHome } from './core/guards/autorizado.guard';
 import { HttpClientModule } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -23,8 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     ListTeacherComponent,
     DetailTeacherComponent,
     MaintainTeacherComponent,
-    LoginComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
