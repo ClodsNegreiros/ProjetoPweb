@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RegistrationSystem';
-  LinkSignup="login/signup";
+  LinkSignup="registration";
   LinkSignin="login";
 }

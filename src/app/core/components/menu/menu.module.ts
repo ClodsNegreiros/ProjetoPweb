@@ -6,8 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 
 import { MenuComponent } from './menu.component';
-import { FlexLayoutModule } from '@angular/flex-layout/module';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [

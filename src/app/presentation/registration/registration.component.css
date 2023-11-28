@@ -1,0 +1,35 @@
+section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+}
+
+.registration-form {
+  width: 35rem;
+  height: 30rem;
+  padding: 3rem;
+  border-radius: 6px;
+}
+
+.email-confirm,
+.password-confirm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.email-confirm mat-form-field:nth-child(1),
+.password-confirm mat-form-field:nth-child(1) {
+  margin-right: 1rem;
+}
+
+mat-form-field {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+button {
+  color: var(--color-pinkish-white) !important;
+  background-color: var(--bg-dark-grey) !important;
+  width: 100%;
+}
