@@ -19,6 +19,12 @@
       "senha": "13042003",
       "isaluno": true,
       "id": 3
+    },
+    {
+      "email": "canalapoiopb@gmail.com",
+      "senha": "1234",
+      "isaluno": false,
+      "id": 4
     }
   ]
 }

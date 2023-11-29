@@ -202,6 +202,6 @@ export class MaintainSubjectComponent {
   //         duration: 4000,
   //       }
   //     );
-  //   });
+  //   })
   // }
 }

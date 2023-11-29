@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { User } from 'src/app/domain/entities/User';
 
 
@@ -8,6 +8,7 @@ import { User } from 'src/app/domain/entities/User';
   providedIn: 'root'
 })
 export class UserService {
+
 
   constructor(private httpclient:HttpClient) { 
 
@@ -36,8 +37,8 @@ export class UserService {
     return this.httpclient.delete<User>(`${this.UserEndpoint}/${id}`);
   }
 
-  getuserbyemail(email:string):Observable<User>{
-    return this.httpclient.get<User>(`${this.UserEndpoint}/?email=${email}`);
+  getuserbyemail(email:string) : Observable<User[]>{
+   return this.httpclient.get<User[]>(`${this.UserEndpoint}/?email=${email}`)
   }
 
 }

@@ -24,7 +24,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     DetailTeacherComponent,
     MaintainTeacherComponent,
     LoginComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,

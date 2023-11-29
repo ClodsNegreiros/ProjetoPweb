@@ -3,8 +3,15 @@
   <span>
   </span>
 
- 
+ <div *ngIf="!InHome">
 <app-menu [LinkSignin]="LinkSignIn" [LinkSignup]="LinkSingUp"></app-menu>
+</div>
+
+<div *ngIf="InHome">
+  <app-menu [LinkSignin]="LinkSignIn" [LinkSignup]="LinkSingUp"></app-menu>
+  </div>
+
+
 
  
 </mat-toolbar>

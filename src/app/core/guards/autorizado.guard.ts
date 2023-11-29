@@ -1,11 +1,6 @@
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { Observable } from 'rxjs';
-import { inject } from '@angular/core';
+import { CanActivateFn } from '@angular/router';
 
+export const canActivateHome: CanActivateFn = (route, state) => {
 
-
- export const canActivateHome: CanActivateFn =
-    (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-      return inject(AuthService).isauthenticaded() ? true : inject(Router).createUrlTree(['/login']);
-    };
+  return true;
+};

@@ -8,6 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes, DashboardRoutingModule } from './dashboard.component.routing';
+import { NavbarModule } from 'src/app/core/components/navbar/navbar.module';
 
 @NgModule({
   declarations: [

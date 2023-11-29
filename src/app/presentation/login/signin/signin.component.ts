@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { UserService } from 'src/app/core/services/user.service';
 import { User } from 'src/app/domain/entities/User';
 @Component({
   selector: 'app-signin',
@@ -16,11 +17,13 @@ import { User } from 'src/app/domain/entities/User';
 export class SigninComponent implements OnInit {
 
   LoginForm: FormGroup;
+  auth?:boolean;
+  _logged?:User
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _Authservice: AuthService,
-    private _router: Router,
+    private _AuthService: AuthService,
+    private _router: Router,private _snackBar: MatSnackBar
   ) {
     this.LoginForm= this._formBuilder.group({
       email: ['', Validators.required],
@@ -44,19 +47,40 @@ export class SigninComponent implements OnInit {
 
 
 
-   async onSubmit():Promise<void>{
-    this.validateForm()
+   async onSubmit(){
+
+    this.validateForm();
     if(this.LoginForm.invalid){
-      return
+      return;
     }
 
-    const { email ,password}= this.LoginForm.value;
-      
-    if (this._Authservice.CanAuth(email,password)){
-      this._router.navigate(['/home']);
-        }
+    const {email,password} = this.LoginForm.value;
+
+    try {
+      const isAuthenticated = await this._AuthService.CanAuth(email, password).toPromise();
+  
+      if (isAuthenticated) {
+        this._router.navigate(['/home']);
+      } else {
+        this._snackBar.open(
+          `Senha/email incorreto. Por favor, tente novamente.`,
+          'Ok',
+          {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            duration: 4000,
+          }
+        );
+      }
+    } catch (error) {
+      console.error('Erro ao autenticar:', error);
+    }
+  }
+
+
+
+
     }
 
 
 
-}

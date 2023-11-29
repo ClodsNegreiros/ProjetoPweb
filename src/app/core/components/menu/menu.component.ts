@@ -10,6 +10,7 @@ export class MenuComponent {
   LinkSignin!: string;
   @Input()
   LinkSignup!: string;
+  @Input() MenuHome:boolean=false;
 }
 
 

@@ -1,54 +1,45 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/domain/entities/User';
 import { UserService } from './user.service';
-import {Router} from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable, catchError, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  
-  isauth:boolean=false
-  
 
-  constructor(private _userservice:UserService,private _router: Router) { }
+  isauth: boolean = false;
+  _logged?: User;
 
-isauthenticaded():boolean{
-  return this.isauth
-}
 
-CanAuth(email:string,senha:string):Observable<boolean>{
-  this._userservice.getuserbyemail(email).subscribe(
-  (user:User)=>{
-    if(user.senha===senha){
-      console.log("oioi")
-      const bool=this.login();
-      this._router.navigate(["/home"])
-      return bool;
-    }
-    else{
-      this._router.navigate(["/login"]);
-      return false;
-    }
-  },(error)=>{
-    this._router.navigate(["/login"]);
-    return false;
-        }
-      );
-      return of(false);
+  constructor(private _userservice: UserService, private _router: Router) { }
+
+  isauthenticaded(): boolean {
+    return this.isauth
   }
 
+  
+  CanAuth(email: string, password: string): Observable<boolean> {
+    return this._userservice.getuserbyemail(email).pipe(
+      map((users: User[]) => {
+        this._logged = users[0];
+        return this._logged.senha === password;
+      }),
+      catchError((error) => {
+       // console.error('Erro ao autenticar:', error);
+        return of(false);
+      })
+    );
+  }
+  
 
+  login(){
+    this.isauth = true;
+  }
 
-
-
-login() : boolean{
-  return this.isauth=true;
-}
-
-logout() : boolean{
- return  this.isauth=false;
-}
+  logout() {
+  this.isauth = false;
+  }
 
 }

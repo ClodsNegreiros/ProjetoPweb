@@ -1,5 +1,6 @@
 import { Input } from '@angular/core';
 import { Component } from '@angular/core';
+import {ActivatedRoute} from "@angular/router"
 
 
 @Component({
@@ -11,4 +12,5 @@ export class AppComponent {
   title = 'RegistrationSystem';
   LinkSignup="login/signup";
   LinkSignin="login";
+
 }
