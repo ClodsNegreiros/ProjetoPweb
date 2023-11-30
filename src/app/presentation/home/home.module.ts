@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import {RouterModule} from "@angular/router";
 import { HomeRoutes } from './home.component.routing';
 import {HttpClientModule} from '@angular/common/http'
+import { NavbarModule } from 'src/app/core/components/navbar/navbar.module';
 
 
 
@@ -13,6 +14,7 @@ import {HttpClientModule} from '@angular/common/http'
     CommonModule,
     RouterModule.forChild(HomeRoutes),
     HttpClientModule,
+    NavbarModule
   ]
 })
 export class HomeModule { }

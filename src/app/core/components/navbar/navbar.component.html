@@ -2,16 +2,5 @@
   <a routerLink="/">Gnosis Educação</a>
   <span>
   </span>
-
- <div *ngIf="!InHome">
-<app-menu [LinkSignin]="LinkSignIn" [LinkSignup]="LinkSingUp"></app-menu>
-</div>
-
-<div *ngIf="InHome">
-  <app-menu [LinkSignin]="LinkSignIn" [LinkSignup]="LinkSingUp"></app-menu>
-  </div>
-
-
-
- 
+<app-menu [LinkSignin]="LinkSignIn" [LinkSignup]="LinkSignUp"></app-menu>
 </mat-toolbar>

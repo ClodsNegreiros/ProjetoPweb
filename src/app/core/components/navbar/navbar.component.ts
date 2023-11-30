@@ -6,7 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
- @Input() LinkSignIn: string="";
- @Input() LinkSingUp:string="";
-  InHome: boolean=false;
+  LinkSignUp="login/signup";
+  LinkSignIn="login";
 }

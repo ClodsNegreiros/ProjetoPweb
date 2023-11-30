@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+import { Router,RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,19 +7,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { DashboardComponent } from './dashboard.component';
-import { DashboardRoutes, DashboardRoutingModule } from './dashboard.component.routing';
+import { DashboardRoutes} from './dashboard.component.routing';
 import { NavbarModule } from 'src/app/core/components/navbar/navbar.module';
 
 @NgModule({
   declarations: [
-    DashboardComponent,
+    DashboardComponent,  
   ],
   imports: [
     CommonModule,
     MatIconModule,
     MatCardModule,
     MatSidenavModule,
-    DashboardRoutingModule
+    RouterModule.forChild(DashboardRoutes)
   ]
 })
 export class DashboardModule { }

@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path:"login",
     loadChildren:()=>import("../app/presentation/login/login.module").then(module=>module.LoginModule)
-  },
+  }, 
   {
     path:"home",
     loadChildren:() => import("../app/presentation/home/home.module").then(module=>module.HomeModule)

@@ -10,7 +10,4 @@ import {ActivatedRoute} from "@angular/router"
 })
 export class AppComponent {
   title = 'RegistrationSystem';
-  LinkSignup="login/signup";
-  LinkSignin="login";
-
 }
