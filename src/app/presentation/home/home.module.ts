@@ -5,6 +5,13 @@ import {RouterModule} from "@angular/router";
 import { HomeRoutes } from './home.component.routing';
 import {HttpClientModule} from '@angular/common/http'
 import { NavbarModule } from 'src/app/core/components/navbar/navbar.module';
+import {Component} from '@angular/core';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarModule } from './sidebar/sidebar.module';
+import { NavbarComponent } from 'src/app/core/components/navbar/navbar.component';
+
+
 
 
 
@@ -14,7 +21,8 @@ import { NavbarModule } from 'src/app/core/components/navbar/navbar.module';
     CommonModule,
     RouterModule.forChild(HomeRoutes),
     HttpClientModule,
-    NavbarModule
+    MatSidenavModule,
+    SidebarModule,
   ]
 })
 export class HomeModule { }
