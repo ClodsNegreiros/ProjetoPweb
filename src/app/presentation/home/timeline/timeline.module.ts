@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HorarioComponent } from './horario/horario.component';
+import { FaltasComponent } from './faltas/faltas.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HorarioComponent,
+    FaltasComponent
+  ],
   imports: [
     CommonModule
   ]
