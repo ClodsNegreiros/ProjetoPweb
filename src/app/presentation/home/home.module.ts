@@ -10,13 +10,14 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { NavbarComponent } from 'src/app/core/components/navbar/navbar.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, TimelineComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(HomeRoutes),
