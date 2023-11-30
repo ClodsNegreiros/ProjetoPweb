@@ -1,9 +1,3 @@
-.card{
-    width: 60%;
-}
-
-#container-timeline{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+.mat-mdc-tab-body.mat-mdc-tab-body-active{
+    height:100%;
 }

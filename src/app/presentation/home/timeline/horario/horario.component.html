@@ -1,1 +1,29 @@
-<p>horario works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <!-- Position Column -->
+    <ng-container matColumnDef="Dia">
+      <th mat-header-cell *matHeaderCellDef> Dia </th>
+      <td mat-cell *matCellDef="let element"> {{element.day}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="13h-14h:40">
+      <th mat-header-cell *matHeaderCellDef> 13h-14h:40 </th>
+      <td mat-cell *matCellDef="let element"> {{element.Materia}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="15h">
+      <th mat-header-cell *matHeaderCellDef> 13h-14h:40 </th>
+      <td mat-cell *matCellDef="let element"> {{element.Materia2}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="16h">
+      <th mat-header-cell *matHeaderCellDef> 13h-14h:40</th>
+      <td mat-cell *matCellDef="let element"> {{element.Materia3}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
