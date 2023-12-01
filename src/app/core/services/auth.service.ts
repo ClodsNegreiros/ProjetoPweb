@@ -24,7 +24,13 @@ export class AuthService {
     return this._userservice.getuserbyemail(email).pipe(
       map((users: User[]) => {
         this._logged = users[0];
-        return this._logged.senha === password;
+        if(this._logged.senha===password){
+          window.localStorage.setItem("token","JBHFJLAPSI");
+          return true;
+        }
+        else{
+          return false;
+        }
       }),
       catchError((error) => {
        // console.error('Erro ao autenticar:', error);

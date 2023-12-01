@@ -16,13 +16,20 @@ import { AvisosComponent } from './timeline/avisos/avisos.component';
 import { HorarioComponent } from './timeline/horario/horario.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { NotasComponent } from './notas/notas.component';
+import { TurmasComponent } from './turmas/turmas.component';
+import { DesempenhoComponent } from './desempenho/desempenho.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent, TimelineComponent,FaltasComponent,AvisosComponent,HorarioComponent,SidebarComponent],
+  declarations: [HomeComponent, TimelineComponent,FaltasComponent,AvisosComponent,HorarioComponent,SidebarComponent, NotasComponent, TurmasComponent, DesempenhoComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(HomeRoutes),
@@ -30,7 +37,11 @@ import { MatTableModule } from '@angular/material/table';
     MatSidenavModule,
      MatCardModule,
      MatTabsModule,
-     MatTableModule
+     MatTableModule,
+     MatSortModule,
+     MatFormFieldModule,
+     MatInputModule,
+     MatPaginatorModule
   ]
 })
 export class HomeModule { }

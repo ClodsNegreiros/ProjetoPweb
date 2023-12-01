@@ -21,7 +21,8 @@ const routes: Routes = [
   }, 
   {
     path:"home",
-    loadChildren:() => import("../app/presentation/home/home.module").then(module=>module.HomeModule)
+    loadChildren:() => import("../app/presentation/home/home.module").then(module=>module.HomeModule),
+    canActivate:[canActivateHome]
   }
   ,
   {
