@@ -1,22 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatCard, MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { UserService } from 'src/app/core/services/user.service';
 import { Student } from 'src/app/domain/entities/Student';
 import { Teacher } from 'src/app/domain/entities/Teacher';
-@Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css'],
-  standalone: false,
-})
-export class SigninComponent implements OnInit {
 
+@Component({
+  selector: 'app-signinteacher',
+  templateUrl: './signinteacher.component.html',
+  styleUrls: ['./signinteacher.component.css']
+})
+export class SigninteacherComponent {
   LoginForm: FormGroup;
   auth?:boolean;
   _logged?:Student | Teacher;
@@ -58,7 +53,7 @@ export class SigninComponent implements OnInit {
     const {email,password} = this.LoginForm.value;
 
     try {
-      const isAuthenticated = await this._AuthService.CanAuth(email, password,"aluno").toPromise();
+      const isAuthenticated = await this._AuthService.CanAuth(email, password,"professor").toPromise();
   
       if (isAuthenticated) {
         this._router.navigate(['/home']);
@@ -78,10 +73,4 @@ export class SigninComponent implements OnInit {
     }
   }
 
-
-
-
-    }
-
-
-
+}

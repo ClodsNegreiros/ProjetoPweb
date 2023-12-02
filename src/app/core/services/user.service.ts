@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
-import { User } from 'src/app/domain/entities/User';
-
+import { Observable } from 'rxjs';
+import { Student } from 'src/app/domain/entities/Student';
+import { Teacher } from 'src/app/domain/entities/Teacher';
+import { TeacherService } from './teacher.service';
+import { StudentService } from './student.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,35 +12,14 @@ import { User } from 'src/app/domain/entities/User';
 export class UserService {
 
 
-  constructor(private httpclient:HttpClient) { 
+  constructor(private httpclient:HttpClient,private teacherservice:TeacherService,private studentservice :StudentService) { }
 
+  getStudentbyemail(email:string):Observable<Student[]>{
+    return this.httpclient.get<Student[]>(`http://localhost:3000/Students/?email=${email}`)
   }
 
-  UserEndpoint: string = 'http://localhost:3000/users';
-  users: User[]=[];
-
-  getusers(): Observable<User>{
-    return this.httpclient.get<User>(this.UserEndpoint);
-  }
-
-  getuserbyid(id:number): Observable<User>{
-    return this.httpclient.get<User>(`${this.UserEndpoint}/${id}`)
-    }
-
-  addeuser(user:User):Observable<User>{
-     return this.httpclient.post<User>(this.UserEndpoint,user);
-    }
-
-  updateuser(user:User,id:number):Observable<User>{
-    return this.httpclient.patch<User>(`${this.UserEndpoint}/${id}`,user);
-  }
-
-  deleteuser(id:number):Observable<User>{
-    return this.httpclient.delete<User>(`${this.UserEndpoint}/${id}`);
-  }
-
-  getuserbyemail(email:string) : Observable<User[]>{
-   return this.httpclient.get<User[]>(`${this.UserEndpoint}/?email=${email}`)
+   getTeacherbyemail(email:string):Observable<Teacher[]>{
+    return this.httpclient.get<Teacher[]>(`http://localhost:3000/Teachers/?email=${email}`)
   }
 
 }

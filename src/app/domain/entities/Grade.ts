@@ -4,8 +4,8 @@ import { IStudent, Student } from "./Student";
 export interface IGrade {
   id: number;
   value: number;
-  student: IStudent;
-  subject: ISubject;
+  student: Student;
+  subject: Subject;
 }
 
 export class Grade {

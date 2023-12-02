@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StudentService } from 'src/app/core/services/student.service';
+import { TeacherService } from 'src/app/core/services/teacher.service';
 import { UserService } from 'src/app/core/services/user.service';
-import { User } from 'src/app/domain/entities/User';
+import { Student } from 'src/app/domain/entities/Student';
+import { Teacher } from 'src/app/domain/entities/Teacher';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +24,8 @@ export class SignupComponent implements OnInit{
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _userservice: UserService,
+    private _studentservice: StudentService,
+    private _teacherservice:TeacherService,
     private _snackBar: MatSnackBar,
     private _router: Router,
     private _route: ActivatedRoute
@@ -59,14 +63,18 @@ export class SignupComponent implements OnInit{
       return;
     }
     const { email ,password,ator}= this.LoginForm.value;
-    const user= new User( {
-      email: email,
-      senha:password,
-      isaluno: ator==="aluno" ? true : false 
-        } 
-      );
-      console.log(password);
-        this._userservice.addeuser(user).subscribe((user:User) => {
+    const user= ator =="aluno" ? new Student({
+      name:"João Marcos",
+      age:20,
+      email:email,
+      password:password
+    }) : new Teacher({
+      name:"João Marcos",
+      email:email,
+      password:password
+    });
+  if(ator=="aluno"){
+        this._studentservice.addStudent(user as Student).subscribe((user: Student) => {
           this._snackBar.open(
             `o Usuário foi cadastrado com sucesso! Faça seu Login.`,
             'Ok',
@@ -89,7 +97,31 @@ export class SignupComponent implements OnInit{
             }
           );
         });
-        
-        
+      }
+        else{
+          this._teacherservice.addTeacher(user as Teacher).subscribe((user:Teacher) => {
+            this._snackBar.open(
+              `o Usuário foi cadastrado com sucesso! Faça seu Login.`,
+              'Ok',
+              {
+                horizontalPosition: 'right',
+                verticalPosition: 'top',
+                duration: 4000,
+              }
+            );
+            this._router.navigate(['/login']);
+          },
+          (error) => {
+            this._snackBar.open(
+              `Erro ao cadastrar usuário. Por favor tente novamente.`,
+              'Ok',
+              {
+                horizontalPosition: 'right',
+                verticalPosition: 'top',
+                duration: 4000,
+              }
+            );
+          });
+        }
     }
 }

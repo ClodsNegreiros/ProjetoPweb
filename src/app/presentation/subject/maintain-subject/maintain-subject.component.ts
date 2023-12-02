@@ -13,8 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './maintain-subject.component.html',
   styleUrls: ['./maintain-subject.component.css']
 })
-export class MaintainSubjectComponent {
-
+export class MaintainSubjectComponent {}
+/*
   teachers: Teacher[] = [];
 
   subjectForm: FormGroup;
@@ -38,7 +38,9 @@ export class MaintainSubjectComponent {
 
   ngOnInit(): void {
     this.checkEditMode();
-    this.teachers = this._teacherService.getTeachers();
+    this._teacherService.getTeachers().subscribe((teachers:Teacher[])=>{
+      this.teachers=teachers;
+    });
   }
 
   validateForm(): void {
@@ -70,10 +72,7 @@ export class MaintainSubjectComponent {
 
     const { name, teacher } = this.subjectForm.value;
 
-    const subject = new Subject({
-      name: name,
-      teacher: teacher
-    })
+    const subject = new Subject()
 
     this._subjectService.addSubject(subject).subscribe((subject: Subject) => {
       this._snackBar.open(
@@ -202,6 +201,9 @@ export class MaintainSubjectComponent {
   //         duration: 4000,
   //       }
   //     );
-  //   })
+  //   });
   // }
-}
+
+
+  
+*/

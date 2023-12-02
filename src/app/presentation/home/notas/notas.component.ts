@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Student } from 'src/app/domain/entities/Student';
+import { Teacher } from 'src/app/domain/entities/Teacher';
 
 export interface IGradeData{
   nota:number
@@ -30,6 +32,7 @@ export class NotasComponent {
 
   displayedColumns: string[] = ["Materia","Nota"];
   dataSource: MatTableDataSource<IGradeData>;
+  userlogged:Teacher | Student =JSON.parse(window.localStorage.getItem("user")?? "")
 
 
   constructor() {
@@ -40,6 +43,8 @@ export class NotasComponent {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+
 
 
 }
