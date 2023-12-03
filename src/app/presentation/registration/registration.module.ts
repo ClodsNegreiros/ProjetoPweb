@@ -16,7 +16,7 @@ import { RegistrationRoutes } from './registration.component.routing';
 
 @NgModule({
   declarations: [
-    RegistrationComponent
+    RegistrationComponent,
   ],
   imports: [
     CommonModule,

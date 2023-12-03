@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, SimpleChange, SimpleChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { SubjectService } from 'src/app/core/services/subject.service';
 import { Subject } from 'src/app/domain/entities/Subject';
@@ -11,19 +12,21 @@ import { Subject } from 'src/app/domain/entities/Subject';
 })
 export class ListSubjectComponent {
 
-  subjects: Subject[] = [];
+  subjects!: MatTableDataSource<Subject>;
 
   displayedColumns: string[] = ['id', 'name', 'actions'];
 
   constructor(
     private subjectService: SubjectService,
-    private _snackBar: MatSnackBar
-  ) {}
+    // TODO: Criar service para snackbar, evitar repetição de código.
+    private _snackBar: MatSnackBar,
+  ) {
+  }
 
   ngOnInit(): void {
     this.subjectService.getSubjects().subscribe(
       (subject) => {
-        this.subjects = subject;
+        this.subjects = new MatTableDataSource<Subject>(subject);
       }
     );
   }
@@ -31,9 +34,11 @@ export class ListSubjectComponent {
   deleteSubject(subjectId: number) {
     this.subjectService.deleteSubject(subjectId).subscribe(
       () => {
-        const indexToRemove = this.subjects.findIndex(value => value.id === subjectId);
+        const indexToRemove = this.subjects.data.findIndex(value => value.id === subjectId);
         if (indexToRemove > -1) {
-          this.subjects.splice(indexToRemove, 1);
+          this.subjects.data.splice(indexToRemove, 1);
+          this.subjects = new MatTableDataSource(this.subjects.data);
+
           this._snackBar.open(
             `A matéria foi excluída com sucesso.`,
             'Ok',
@@ -44,8 +49,6 @@ export class ListSubjectComponent {
             }
           );
         }
-
-        window.location.reload();
       },
       (error) => {
         console.error('Erro ao excluir a matéria', error);
