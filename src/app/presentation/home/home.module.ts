@@ -25,13 +25,23 @@ import { MatInputModule } from '@angular/material/input';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { SettingsComponent } from './settings/settings.component';
+import { DesempenhoturmaComponent } from './timeline/desempenhoturma/desempenhoturma.component';
+import { CadastronotasComponent } from './cadastronotas/cadastronotas.component';
+import { CadastroavisosComponent } from './cadastroavisos/cadastroavisos.component';
+import { AlunosComponent } from './alunos/alunos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent, TimelineComponent,FaltasComponent,AvisosComponent,HorarioComponent,SidebarComponent, NotasComponent, TurmasComponent, DesempenhoComponent, SettingsComponent],
+  declarations: [HomeComponent, TimelineComponent,FaltasComponent,
+    AvisosComponent,HorarioComponent,SidebarComponent, NotasComponent, TurmasComponent,
+     DesempenhoComponent, SettingsComponent, DesempenhoturmaComponent, CadastronotasComponent, CadastroavisosComponent, AlunosComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(HomeRoutes),
@@ -44,7 +54,13 @@ import { SettingsComponent } from './settings/settings.component';
      MatFormFieldModule,
      MatInputModule,
      MatPaginatorModule,
-     MatSnackBarModule
+     MatSnackBarModule,
+     FormsModule,
+     ReactiveFormsModule,
+     MatInputModule,
+     MatFormFieldModule,
+     MatButtonModule,
+     MatSelectModule,
   ]
 })
 export class HomeModule { }

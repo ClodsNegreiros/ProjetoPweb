@@ -12,10 +12,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './presentation/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './presentation/registration/registration.component';
-import { CadastronotasComponent } from './presentation/cadastronotas/cadastronotas.component';
-import { AlunosComponent } from './presentation/alunos/alunos.component';
-import { CadastroavisosComponent } from './presentation/cadastroavisos/cadastroavisos.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,10 +19,7 @@ import { CadastroavisosComponent } from './presentation/cadastroavisos/cadastroa
     ListTeacherComponent,
     DetailTeacherComponent,
     MaintainTeacherComponent,
-    LoginComponent,
-    CadastronotasComponent,
-    AlunosComponent,
-    CadastroavisosComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

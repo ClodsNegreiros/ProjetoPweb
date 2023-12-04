@@ -3,14 +3,15 @@ import { IStudent,Student } from "./Student";
 
 export interface ISubject {
   name: string;
-  teacher: Teacher;
-   Student: Student[]
+  teacher?: Teacher;
+   Student?: Student[]
 }
 
 export class Subject {
-  id!:number;
+  id?:number;
   name: string;
-  teacher: Teacher;
+  teacher?: Teacher;
+  Student?: Student[]
 
   constructor(subject: ISubject) {
     this.name = subject.name;

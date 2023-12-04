@@ -7,11 +7,12 @@ import { FaltasComponent } from "./timeline/faltas/faltas.component";
 import { NotasComponent } from "./notas/notas.component";
 import { DesempenhoComponent } from "./desempenho/desempenho.component";
 import { TurmasComponent } from "./turmas/turmas.component";
-import { CadastronotasComponent } from "../cadastronotas/cadastronotas.component";
-import { CadastroavisosComponent } from "../cadastroavisos/cadastroavisos.component";
-import { AlunosComponent } from "../alunos/alunos.component";
 import { TeacherHomeGuard } from "src/app/core/guards/typeuser.guard";
 import { studenthomeGuard } from "src/app/core/guards/studenthome.guard";
+import { SettingsComponent } from "./settings/settings.component";
+import { AlunosComponent } from "./alunos/alunos.component";
+import { CadastroavisosComponent } from "./cadastroavisos/cadastroavisos.component";
+import { CadastronotasComponent } from "./cadastronotas/cadastronotas.component";
 
 export const HomeRoutes: Route[] = [
     {
@@ -25,33 +26,36 @@ export const HomeRoutes: Route[] = [
             {
                 path:"notas",
                 component:NotasComponent,
-                canActivate:[studenthomeGuard]
+               
             },
             {
                 path:"desempenho",
                 component:DesempenhoComponent,
-                canActivate:[studenthomeGuard]
+               
             },
             {
                 path:"turmas",
                 component:TurmasComponent,
-                canActivate:[studenthomeGuard]
+                
             },
             {
                 path:"cadastronotas",
                 component:CadastronotasComponent,
-                canActivate:[TeacherHomeGuard]
+                
             },
             {
                 path:"cadastroavisos",
                 component:CadastroavisosComponent,
-                canActivate:[TeacherHomeGuard]
+               
             },
             {
                 path:"alunos",
                 component:AlunosComponent,
-                canActivate:[TeacherHomeGuard]
             },
+            {
+                path:"settings",
+                component:SettingsComponent
+            }
         ]
      }
 ]

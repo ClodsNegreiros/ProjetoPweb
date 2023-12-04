@@ -2,14 +2,14 @@ import { ISubject, Subject } from 'src/app/domain/entities/Subject';
 import { IStudent, Student } from "./Student";
 
 export interface IGrade {
-  id: number;
+  id?: number;
   value: number;
   student: Student;
   subject: Subject;
 }
 
 export class Grade {
-  id: number;
+  id?: number;
   value: number;
   student: Student;
   subject: Subject;

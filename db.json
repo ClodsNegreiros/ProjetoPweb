@@ -9,12 +9,139 @@
   ],
   "students": [
     {
+      "name": "Guga WAG",
       "email": "joao.chaves@academico.ifpb.edu.br",
       "password": "13042003",
-      "id": 1
+      "id": 1,
+      "subjects": [
+        {
+          "name": "PWEB"
+        }
+      ]
     }
   ],
-  "grades": [],
+  "grades": [
+    {
+      "value": "10",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 1
+    },
+    {
+      "value": "10",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 2
+    },
+    {
+      "value": "5",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 3
+    },
+    {
+      "value": "5",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 4
+    },
+    {
+      "value": "1",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 5
+    },
+    {
+      "value": "1",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 6
+    },
+    {
+      "value": "3",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 7
+    },
+    {
+      "value": "3",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 8
+    },
+    {
+      "value": "1",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 9
+    },
+    {
+      "value": "1",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 10
+    },
+    {
+      "value": "2",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 11
+    },
+    {
+      "value": "2",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 12
+    }
+  ],
   "users": [
     {
       "email": "joaomarcos77777.jm@gmail.com",
