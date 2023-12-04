@@ -1,20 +1,20 @@
 import { ISubject, Subject } from "./Subject";
 
 export interface IStudent {
-  name: string;
-  age: number;
+  name?: string;
+  age?: number;
   email: string;
  // subjects: ISubject[];
-  password: string;
+  password?: string;
 }
 
 export class Student {
-  id!:number;
-  name: string;
-  age: number;
+  id?:number;
+  name?: string;
+  age?: number;
   email: string;
   //subjects: Subject[];
-  password:string;
+  password?:string;
 
   constructor(student: IStudent) {
     this.name = student.name;

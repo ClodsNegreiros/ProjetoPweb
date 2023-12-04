@@ -5,36 +5,27 @@ section {
     height: 100vh;
   }
   
-  .login-form {
-    width: 25rem;
+  .registration-form {
+    width: 35rem;
     height: 30rem;
     padding: 3rem;
     border-radius: 6px;
   }
   
-  .account {
-    margin-bottom: 2.5rem;
+  .email-confirm,
+  .password-confirm {
+    display: flex;
+    justify-content: space-between;
   }
   
-  h1 {
-    margin-bottom: .1rem;
-  }
-  
-  span {
-    font-weight: 300;
-    margin-bottom: 12rem;
-  }
-  
-  a {
-    font-weight: 500;
-  }
-  
-  a:hover {
-    text-decoration: underline;
+  .email-confirm mat-form-field:nth-child(1),
+  .password-confirm mat-form-field:nth-child(1) {
+    margin-right: 1rem;
   }
   
   mat-form-field {
     margin-bottom: 1.5rem;
+    width: 100%;
   }
   
   button {

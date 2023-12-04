@@ -4,7 +4,7 @@
       <span class="fs-4">Gnosis Educação</span>
     </a>
     <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
+    <ul class="nav nav-pills flex-column mb-auto" >
       <li class="nav-item">
         <a href="/home" class="nav-link active" aria-current="page" >
           <i class="fa-solid fa-house me-2" width="16" height="16"></i>
@@ -12,34 +12,34 @@
         </a>
       </li>
       <li>
-        <a href="/home/notas" class="nav-link text-white">
+        <a [routerLink]="actionsUser.menu1[1]" class="nav-link text-white">
           <i class="fa-solid fa-house me-2" width="16" height="16"></i>
-          Notas
+          {{actionsUser.menu1[0]}}
         </a>
       </li>
       <li>
-        <a href="/home/turmas" class="nav-link text-white">
+        <a [routerLink]="actionsUser.menu2[1]" class="nav-link text-white">
           <i class="fa-solid fa-house me-2" width="16" height="16"></i>
-          Turmas
+          {{actionsUser.menu2[0]}}
         </a>
       </li>
       <li>
-        <a href="/home/desempenho" class="nav-link text-white">
+        <a [routerLink]="actionsUser.menu3[1]" class="nav-link text-white">
           <i class="fa-solid fa-house me-2" width="16" height="16"></i>
-          Desempenho
+          {{actionsUser.menu3[0]}}
         </a>
       </li>
     </ul>
-    <hr>
-        <div class="dropdown">
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-regular fa-user rounded-circle me-2"></i>
-            <strong>{{userlogged.email}}</strong>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
+        <hr>
+            <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-regular fa-user rounded-circle me-2"></i>
+                <strong style="font-size: 10px;">{{userlogged?.email}}</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><button class="dropdown-item" (click)="logout()">Sign out</button></li>
+            </ul>
         </div>
     </div>

@@ -1,44 +1,77 @@
-<div class="loginform">
-    
+<section class="bg-dark-grey">
+  <div>
+    <img
+      src="../../../../assets/imgs/imagesecond-removebg-preview.png"
+      alt="#"
+    />
+  </div>
+
+  <div class="login-form bg-light-grey">
     <mat-card-content>
-        <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()" action="">
-          <div fxLayout="column" >
-            <h1 style="display: flex; justify-content: center; text-align:center;align-items: center;">Sign In</h1>
-            <mat-form-field appearance="outline">
-              <input
-                matInput
-                placeholder="Email"
-                name="email"
-                formControlName="email"
-              >
-              <mat-error *ngIf="this.LoginForm.get('email')?.dirty && this.LoginForm.get('email')?.hasError('required')">
-               Campo Obrigatório
-              </mat-error>
-            </mat-form-field>
-    
-            <mat-form-field>
-                <input
-                matInput
-                placeholder="Senha"
-                name="password"
-                formControlName="password"
-              >
-              <mat-error *ngIf="this.LoginForm.get('password')?.dirty && this.LoginForm.get('password')?.hasError('required')">
-               Campo Obrigatório
-              </mat-error>
-            </mat-form-field>
+      <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+        <div fxLayout="column">
+          <div class="color-pinkish-white">
+            <!-- <h1 style="display: flex; justify-content: center; text-align:center;align-items: center;" class="color-pinkish-white">Entre em sua conta</h1> -->
+            <h1>Entre em sua conta</h1>
+            <span>
+              novo usuário?
+              <a routerLink="/registration" class="color-pinkish-white">
+                cadastre-se
+              </a>
+            </span>
           </div>
-    
-          <button mat-raised-button color="primary">
-            Entrar
-          </button>
-        </form>
-  
-        <div>
+          <div class="account color-pinkish-white">
+            <span>
+              É Aluno?
+              <a routerLink="/login" class="color-pinkish-white">
+                Entre aqui.
+              </a>
+            </span>
+          </div>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              name="email"
+              formControlName="email"
+            />
+            <mat-error
+              *ngIf="
+                this.LoginForm.get('email')?.dirty &&
+                this.LoginForm.get('email')?.hasError('required')
+              "
+            >
+              Campo Obrigatório
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input
+              matInput
+              name="password"
+              formControlName="password"
+            />
+            <mat-error
+              *ngIf="
+                this.LoginForm.get('password')?.dirty &&
+                this.LoginForm.get('password')?.hasError('required')
+              "
+            >
+              Campo Obrigatório
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button>Entrar</button>
+      </form>
+
+      <!-- <div>
           <button mat-raised-button> <a routerLink="/login/signup"> Cadastre-se aqui!</a> </button>
-        </div>
-        <div>
-          <button mat-raised-button> <a routerLink="/login/signin"> É Aluno? Faça Login aqui!</a> </button>
-        </div>
+        </div> -->
     </mat-card-content>
-      </div>
+  </div>
+</section>
+  
+  

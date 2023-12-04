@@ -1,7 +1,19 @@
 {
   "subjects": [],
-  "teachers": [],
-  "students": [],
+  "teachers": [
+    {
+      "email": "joaomarcos77777.jm@gmail.com",
+      "password": "1111111111111111111111",
+      "id": 1
+    }
+  ],
+  "students": [
+    {
+      "email": "joao.chaves@academico.ifpb.edu.br",
+      "password": "13042003",
+      "id": 1
+    }
+  ],
   "grades": [],
   "users": [
     {

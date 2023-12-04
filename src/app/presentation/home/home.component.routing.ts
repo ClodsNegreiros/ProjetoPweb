@@ -7,6 +7,11 @@ import { FaltasComponent } from "./timeline/faltas/faltas.component";
 import { NotasComponent } from "./notas/notas.component";
 import { DesempenhoComponent } from "./desempenho/desempenho.component";
 import { TurmasComponent } from "./turmas/turmas.component";
+import { CadastronotasComponent } from "../cadastronotas/cadastronotas.component";
+import { CadastroavisosComponent } from "../cadastroavisos/cadastroavisos.component";
+import { AlunosComponent } from "../alunos/alunos.component";
+import { TeacherHomeGuard } from "src/app/core/guards/typeuser.guard";
+import { studenthomeGuard } from "src/app/core/guards/studenthome.guard";
 
 export const HomeRoutes: Route[] = [
     {
@@ -15,20 +20,38 @@ export const HomeRoutes: Route[] = [
     children:[
             {
                 path:"",
-                component:TimelineComponent
+                component:TimelineComponent,
             },
             {
                 path:"notas",
-                component:NotasComponent
+                component:NotasComponent,
+                canActivate:[studenthomeGuard]
             },
             {
                 path:"desempenho",
-                component:DesempenhoComponent
+                component:DesempenhoComponent,
+                canActivate:[studenthomeGuard]
             },
             {
                 path:"turmas",
-                component:TurmasComponent
-            }
+                component:TurmasComponent,
+                canActivate:[studenthomeGuard]
+            },
+            {
+                path:"cadastronotas",
+                component:CadastronotasComponent,
+                canActivate:[TeacherHomeGuard]
+            },
+            {
+                path:"cadastroavisos",
+                component:CadastroavisosComponent,
+                canActivate:[TeacherHomeGuard]
+            },
+            {
+                path:"alunos",
+                component:AlunosComponent,
+                canActivate:[TeacherHomeGuard]
+            },
         ]
      }
 ]

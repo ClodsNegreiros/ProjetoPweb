@@ -23,13 +23,15 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent, TimelineComponent,FaltasComponent,AvisosComponent,HorarioComponent,SidebarComponent, NotasComponent, TurmasComponent, DesempenhoComponent],
+  declarations: [HomeComponent, TimelineComponent,FaltasComponent,AvisosComponent,HorarioComponent,SidebarComponent, NotasComponent, TurmasComponent, DesempenhoComponent, SettingsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(HomeRoutes),
@@ -41,7 +43,8 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
      MatSortModule,
      MatFormFieldModule,
      MatInputModule,
-     MatPaginatorModule
+     MatPaginatorModule,
+     MatSnackBarModule
   ]
 })
 export class HomeModule { }

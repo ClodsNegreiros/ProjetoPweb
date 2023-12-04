@@ -30,7 +30,7 @@ export class AuthService {
         if(this._logged.password===password){
           window.localStorage.setItem("token","JBHFJLAPSI");
           
-          window.localStorage.setItem("user",JSON.stringify(this._logged));
+          window.localStorage.setItem("user",JSON.stringify({...this._logged,type:"aluno"}));
           return true;
         }
         else{
@@ -50,7 +50,7 @@ export class AuthService {
         if(this._logged.password===password){
           window.localStorage.setItem("token","JBHFJLAPSI");
           
-          window.localStorage.setItem("user",JSON.stringify(this._logged));
+          window.localStorage.setItem("user",JSON.stringify({...this._logged,type:"professor"}));
           return true;
         }
         else{

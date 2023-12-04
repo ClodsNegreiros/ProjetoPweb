@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
 import { Router, RouterModule } from '@angular/router';
 import { LoginRoutes} from './login.component.routing';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -25,7 +24,6 @@ import { SigninteacherComponent } from './signinteacher/signinteacher.component'
 
 @NgModule({
   declarations: [
-    SignupComponent,
     SigninComponent,
     SigninteacherComponent
   ],

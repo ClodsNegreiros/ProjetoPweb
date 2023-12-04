@@ -1,14 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar.component';
-
-
-
 @NgModule({
-  declarations: [SidebarComponent],
+  declarations: [],
   imports: [
     CommonModule
   ],
-  exports:[SidebarComponent]
+  exports:[]
 })
-export class SidebarModule { }
+export class SidebarModule{}
+

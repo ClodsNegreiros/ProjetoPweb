@@ -11,6 +11,10 @@ import { MaintainTeacherComponent } from './presentation/teacher/maintain-teache
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './presentation/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RegistrationComponent } from './presentation/registration/registration.component';
+import { CadastronotasComponent } from './presentation/cadastronotas/cadastronotas.component';
+import { AlunosComponent } from './presentation/alunos/alunos.component';
+import { CadastroavisosComponent } from './presentation/cadastroavisos/cadastroavisos.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
     ListTeacherComponent,
     DetailTeacherComponent,
     MaintainTeacherComponent,
-    LoginComponent
+    LoginComponent,
+    CadastronotasComponent,
+    AlunosComponent,
+    CadastroavisosComponent
   ],
   imports: [
     BrowserModule,
