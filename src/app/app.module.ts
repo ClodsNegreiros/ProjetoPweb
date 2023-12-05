@@ -11,7 +11,7 @@ import { MaintainTeacherComponent } from './presentation/teacher/maintain-teache
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './presentation/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RegistrationComponent } from './presentation/registration/registration.component';
+
 @NgModule({
   declarations: [
     AppComponent,

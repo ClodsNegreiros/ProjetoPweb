@@ -8,7 +8,7 @@
             >
               Cadastre-se
             </h1>
-  
+
             <div class="email-confirm">
               <mat-form-field appearance="fill">
                 <mat-label>E-mail</mat-label>
@@ -25,7 +25,7 @@
                 >
                   Campo obrigatório
                 </mat-error>
-  
+
                 <mat-error
                   *ngIf="
                     LoginForm.get('email')?.dirty &&
@@ -35,8 +35,8 @@
                   E-mail inválido
                 </mat-error>
               </mat-form-field>
-  
-              <mat-form-field appearance="fill">
+
+              <!-- <mat-form-field appearance="fill">
                 <mat-label>Confirmar e-mail</mat-label>
                 <input
                   matInput
@@ -59,17 +59,19 @@
                 >
                   Os <strong>e-mails</strong> informados não são iguais!
                 </mat-error>
-              </mat-form-field>
+              </mat-form-field> -->
             </div>
-  
+
             <div class="password-confirm">
               <mat-form-field appearance="fill">
                 <mat-label>Senha</mat-label>
                 <input
                   matInput
                   name="password"
+                  type="password"
                   formControlName="password"
                 />
+
                 <mat-error
                   *ngIf="
                     LoginForm.get('password')?.dirty &&
@@ -78,23 +80,7 @@
                 >
                   Campo obrigatório
                 </mat-error>
-              </mat-form-field>
-  
-              <!-- <mat-form-field appearance="fill">
-                <mat-label>Confirmar senha</mat-label>
-                <input
-                  matInput
-                  name="password"
-                  formControlName="password"
-                />
-                <mat-error
-                  *ngIf="
-                    LoginForm.get('password')?.dirty &&
-                    LoginForm.get('password')?.hasError('required')
-                  "
-                >
-                  Campo obrigatório
-                </mat-error>
+
                 <mat-error
                   *ngIf="
                     LoginForm.get('password')?.dirty &&
@@ -103,9 +89,38 @@
                 >
                   Mínimo de 6 dígitos
                 </mat-error>
+              </mat-form-field>
+
+              <!-- <mat-form-field appearance="fill">
+                <mat-label>Confirmar senha</mat-label>
+                <input
+                  matInput
+                  name="confirmPassword"
+                  type="password"
+                  formControlName="confirmPassword"
+                />
+
+                <mat-error
+                  *ngIf="
+                    LoginForm.get('confirmPassword')?.dirty &&
+                    LoginForm.get('confirmPassword')?.hasError('required')
+                  "
+                >
+                  Campo obrigatório
+                </mat-error>
+
+                <mat-error
+                  *ngIf="
+                    LoginForm.get('confirmPassword')?.dirty &&
+                    !LoginForm.get('confirmPassword')?.hasError('required') &&
+                    LoginForm.hasError('samePassword')
+                  "
+                >
+                  As <strong>senhas</strong> informadas não são iguais!
+                </mat-error>
               </mat-form-field> -->
             </div>
-  
+
             <mat-form-field appearance="fill">
               <mat-label>Select</mat-label>
               <mat-select formControlName="ator">
@@ -121,10 +136,8 @@
                 Campo obrigatório
               </mat-error>
             </mat-form-field>
-  
-  
           </div>
-  
+
           <button type="submit" mat-raised-button color="primary">Cadastrar</button>
         </form>
       </mat-card-content>
