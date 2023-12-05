@@ -2,12 +2,13 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NotasService } from 'src/app/core/services/notas.service';
+import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
 import { Grade } from 'src/app/domain/entities/Grade';
 import { Student } from 'src/app/domain/entities/Student';
 import { Teacher } from 'src/app/domain/entities/Teacher';
 
 export interface IGradeData{
-  nota:number
+  nota:string;
   materia:string
 }
 
@@ -25,7 +26,7 @@ export class NotasComponent implements OnInit{
   notas:IGradeData[];
 
 
-  constructor(private notasservico:NotasService) {
+  constructor(private notasservico:NotasFirebaseService) {
     this.notas=[]
     this.dataSource = new MatTableDataSource();
   }
@@ -36,7 +37,7 @@ export class NotasComponent implements OnInit{
   }
 
   ngOnInit(): void {
-      this.notasservico.getGrades().subscribe(
+      this.notasservico.listar().subscribe(
         (grades:Grade[])=>{
 
           grades.filter((grade:Grade)=>{

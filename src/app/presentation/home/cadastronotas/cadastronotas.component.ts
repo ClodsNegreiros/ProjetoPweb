@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { NotasService } from 'src/app/core/services/notas.service';
+import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
 import { StudentService } from 'src/app/core/services/student.service';
 import { Grade } from 'src/app/domain/entities/Grade';
 import { Student } from 'src/app/domain/entities/Student';
@@ -20,7 +21,7 @@ export class CadastronotasComponent implements OnInit{
   alunos:Student[]=[]
   GradeForm: FormGroup
 
-  constructor(_router:Router,private _matsnackbar:MatSnackBar, private _notasservice:NotasService,private _FormBuilder:FormBuilder,private _alunosservice:StudentService){
+  constructor(_router:Router,private _matsnackbar:MatSnackBar, private _notasservice:NotasFirebaseService,private _FormBuilder:FormBuilder,private _alunosservice:StudentService){
     this.GradeForm= this._FormBuilder.group({
       "valor":['',[Validators.required]],
       "aluno":['',[Validators.required]]
@@ -60,14 +61,14 @@ undirty(){
     this.checkvalidility();
     if(!this.GradeForm.invalid){
       const {valor,aluno}= this.GradeForm.value;
-      const nota = new Grade({
+      const nota = new Grade("",{
         value:valor,
         student:{name:aluno},
         subject:{name:"PWEB"}
       });
-      this._notasservice.addGrade(nota).subscribe((grade:Grade)=>{
+      this._notasservice.inserir(nota).subscribe(()=>{
         this._matsnackbar.open(
-          `Nota cadastrada para o Aluno: ${grade.student.name}`,
+          `Nota cadastrada com sucesso!`,
           'Ok',
           {
             horizontalPosition: 'right',
