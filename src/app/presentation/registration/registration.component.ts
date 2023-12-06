@@ -9,6 +9,7 @@ import { Teacher } from 'src/app/domain/entities/Teacher';
 import { TeacherService } from 'src/app/core/services/teacher.service';
 import { StudentService } from 'src/app/core/services/student.service';
 import { CustomPasswordValidator } from 'src/app/core/validators/CustomPasswordValidator';
+import { CustomEmailValidator } from 'src/app/core/validators/CustomEmailValidator';
 
 @Component({
   selector: 'app-registration',
@@ -22,6 +23,7 @@ export class RegistrationComponent {
 
   isEditMode: boolean = false;
   subjectId!: any;
+  passwordVisibility: boolean = false;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -29,7 +31,6 @@ export class RegistrationComponent {
     private _studentservice: StudentService,
     private _snackBar: MatSnackBar,
     private _router: Router,
-    private _route: ActivatedRoute
   ) {
     this.LoginForm = this._formBuilder.group(
       {
@@ -38,14 +39,12 @@ export class RegistrationComponent {
         password: ['', [Validators.required, Validators.minLength(6)]],
         // confirmPassword: ['', [Validators.required]],
         ator: ['', Validators.required],
-      },
-      {
+      }, {
         validators: [
-          // CustomEmailValidator.sameEmail(),
+          CustomEmailValidator.sameEmail(),
           CustomPasswordValidator.samePassword(),
-        ],
-      }
-    );
+        ]
+      });
   }
 
   ngOnInit(): void {}
@@ -121,7 +120,7 @@ export class RegistrationComponent {
       return;
     }
 
-    const { email, password, ator } = this.LoginForm.value;
+    const { email, password } = this.LoginForm.value;
 
     const user = new Student({
       email: email,
@@ -153,5 +152,9 @@ export class RegistrationComponent {
         );
       }
     );
+  }
+
+  togglePasswordType(): void {
+    this.passwordVisibility = !this.passwordVisibility;
   }
 }

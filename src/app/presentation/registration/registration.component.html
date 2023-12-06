@@ -43,18 +43,19 @@
                   name="confirmEmail"
                   formControlName="confirmEmail"
                 />
+
                 <mat-error
                   *ngIf="
-                    LoginForm.get('confirmEmail')?.dirty &&
-                    LoginForm.get('confirmEmail')?.hasError('required')
+                  !LoginForm.get('confirmEmail')?.hasError('required')
                   "
                 >
                   Campo obrigatório
                 </mat-error>
+
                 <mat-error
                   *ngIf="
                     LoginForm.get('confirmEmail')?.dirty &&
-                    !LoginForm.get('confirmarEmail')?.hasError('required') && LoginForm.get('confirmEmail')?.hasError('sameEmail')
+                    !LoginForm.get('confirmEmail')?.hasError('required') && LoginForm.hasError('sameEmail')
                   "
                 >
                   Os <strong>e-mails</strong> informados não são iguais!
@@ -65,12 +66,19 @@
             <div class="password-confirm">
               <mat-form-field appearance="fill">
                 <mat-label>Senha</mat-label>
-                <input
-                  matInput
-                  name="password"
-                  type="password"
-                  formControlName="password"
-                />
+                <div>
+                  <input
+                    matInput
+                    name="password"
+                    [type]="passwordVisibility ? 'text' : 'password'"
+                    formControlName="password"
+                  />
+
+                  <button (click)="togglePasswordType()" class="password-visibility">
+                    <mat-icon *ngIf="!passwordVisibility">visibility</mat-icon>
+                    <mat-icon *ngIf="passwordVisibility">visibility_off</mat-icon>
+                  </button>
+                </div>
 
                 <mat-error
                   *ngIf="
@@ -80,7 +88,6 @@
                 >
                   Campo obrigatório
                 </mat-error>
-
                 <mat-error
                   *ngIf="
                     LoginForm.get('password')?.dirty &&
@@ -111,8 +118,6 @@
 
                 <mat-error
                   *ngIf="
-                    LoginForm.get('confirmPassword')?.dirty &&
-                    !LoginForm.get('confirmPassword')?.hasError('required') &&
                     LoginForm.hasError('samePassword')
                   "
                 >
@@ -138,7 +143,7 @@
             </mat-form-field>
           </div>
 
-          <button type="submit" mat-raised-button color="primary">Cadastrar</button>
+          <button type="submit" mat-raised-button color="primary" class="submit">Cadastrar</button>
         </form>
       </mat-card-content>
     </div>
