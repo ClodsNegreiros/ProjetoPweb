@@ -8,13 +8,8 @@ import { ListTeacherComponent } from './presentation/teacher/list-teacher/list-t
 import { DetailTeacherComponent } from './presentation/teacher/detail-teacher/detail-teacher.component';
 import { MaintainTeacherComponent } from './presentation/teacher/maintain-teacher/maintain-teacher.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LoginComponent } from './presentation/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RegistrationComponent } from './presentation/registration/registration.component';
-import { FirebaseAppModule } from '@angular/fire/app';
 import { FirestoreModule } from 'src/firestore/firestore.module';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +17,6 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     ListTeacherComponent,
     DetailTeacherComponent,
     MaintainTeacherComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,

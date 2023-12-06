@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegistrationComponent } from './registration.component';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { RegistrationRoutes } from './registration.component.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,8 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [RegistrationComponent],
@@ -27,6 +26,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatIconModule,
     RouterModule.forChild(RegistrationRoutes)
   ],
   exports:[RegistrationComponent]
