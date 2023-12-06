@@ -19,15 +19,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuModule } from 'src/app/core/components/menu/menu.module';
 import { UserService } from 'src/app/core/services/user.service';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { SigninComponent } from './signin/signin.component';
 import { LoginRoutes} from './login.component.routing';
-import { SigninteacherComponent } from './signinteacher/signinteacher.component';
+import { LoginComponent } from './login.component';
 
 
 @NgModule({
   declarations: [
-    SigninComponent,
-    SigninteacherComponent
+    LoginComponent
   ],
   imports: [
     CommonModule,
