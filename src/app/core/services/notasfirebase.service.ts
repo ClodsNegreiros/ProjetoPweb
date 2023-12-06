@@ -3,7 +3,8 @@ import {from, Observable} from 'rxjs';
 import {Grade} from '../../domain/entities/Grade';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
 import {map} from 'rxjs/operators';
-
+import {Subject} from '../../domain/entities/Subject'
+ 
 
 @Injectable({
  providedIn: 'root'
@@ -12,7 +13,7 @@ export class NotasFirebaseService {
 
 
  colecaoNotas: AngularFirestoreCollection<Grade>;
- NOME_COLECAO = 'notas';
+ NOME_COLECAO = 'grades';
 
 
  constructor(private afs: AngularFirestore) {
@@ -32,6 +33,13 @@ export class NotasFirebaseService {
    // Object.assign({}, usuario) é usado para passar um objeto json puro. Não se aceita passar um objeto customizado
    // o from transforma uma promise num Observable, para mantermos a assinatura similar ao do outro service
    return from(this.colecaoNotas.add(Object.assign({}, grade)));
+ }
+
+ listarpormateria(subject:Subject):Observable<Grade[]>{
+  let notasdamateria: AngularFirestoreCollection<Grade>;
+  // fazendo pesquisas usando o where. Um where pode ser encadeado com outro
+  notasdamateria = this.afs.collection(this.NOME_COLECAO, ref => ref.where('subject', '==', subject.name));
+  return notasdamateria.valueChanges();
  }
 
 

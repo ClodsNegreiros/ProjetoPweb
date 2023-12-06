@@ -32,6 +32,14 @@ import { AlunosComponent } from './alunos/alunos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { firebaseConfig } from 'src/firebase.config';
+import { FirestoreModule } from 'src/firestore/firestore.module';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -61,6 +69,11 @@ import { MatSelectModule } from '@angular/material/select';
      MatFormFieldModule,
      MatButtonModule,
      MatSelectModule,
+     FirestoreModule,
+     MatIconModule
+  ],
+  providers:[
+    NotasFirebaseService
   ]
 })
 export class HomeModule { }

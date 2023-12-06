@@ -36,7 +36,6 @@ export class CadastronotasComponent implements OnInit{
           return subject.name==="PWEB"
         })
       });
-      console.log(this.alunos)
     }
     )
    }

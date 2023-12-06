@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./desempenho.component.css']
 })
 export class DesempenhoComponent {
-
 }

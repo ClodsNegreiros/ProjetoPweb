@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './presentation/registration/registration.component';
 import { FirebaseAppModule } from '@angular/fire/app';
 import { FirestoreModule } from 'src/firestore/firestore.module';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 @NgModule({
   declarations: [
     AppComponent,
