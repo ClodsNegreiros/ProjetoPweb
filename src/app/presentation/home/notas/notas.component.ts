@@ -40,12 +40,13 @@ export class NotasComponent implements OnInit{
       this.notasservico.listar().subscribe(
         (grades:Grade[])=>{
 
-          grades.filter((grade:Grade)=>{
-            return grade.studentemail==="joao.chaves@academico.ifpb.edu.br"
-          })
-
+         const user: Student = JSON.parse( window.localStorage.getItem('user') ?? '')
+          console.log(grades);
           grades.map((grade:Grade)=>{
-            this.notas.push({materia:grade.subjectname,nota:grade.value})
+            if(user.email===grade.studentemail){
+              this.notas.push({nota:grade.value,materia:grade.subjectname});
+              this.dataSource= new MatTableDataSource(this.notas)
+            }
           })
          this.dataSource=new MatTableDataSource(this.notas)
         }
