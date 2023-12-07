@@ -32,10 +32,11 @@ export class CadastronotasComponent implements OnInit{
     this._alunosservice.getStudents().subscribe(
     (students:Student[])=>{
       this.alunos=students.filter((student:Student)=>{
-        return student.subjects?.filter((subject:Subject)=>{
-          return subject.name==="PWEB"
+        return student.subjects?.filter((subject:string)=>{
+          return subject==="PWEB"
         })
       });
+
     }
     )
    }

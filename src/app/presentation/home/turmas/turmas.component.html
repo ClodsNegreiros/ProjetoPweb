@@ -1,1 +1,34 @@
-<p>turmas works!</p>
+
+<mat-card class="cadastro">
+    <mat-card-header>
+      <mat-card-title class="color-dark-grey">Cadastra-se nas Turmas Disponíveis:</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="TurmaForm" (ngSubmit)="onSubmit()" action="">
+        <div class="form">
+
+          <mat-form-field>
+            <mat-select
+              name="materia"
+              placeholder="Selecione a materia"
+              formControlName="materia"
+            >
+              <mat-option *ngFor="let materia of materias" [value]="materia.name">
+                {{ materia.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="TurmaForm.get('materia')?.dirty && TurmaForm.get('materia')?.hasError('required')">
+              Campo obrigatório
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+
+        <button mat-raised-button color="primary">
+          Inscrever-se!
+        </button>
+      </form>
+    </mat-card-content>
+
+  </mat-card>

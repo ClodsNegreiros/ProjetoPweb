@@ -1,5 +1,30 @@
 {
-  "subjects": [],
+  "subjects": [
+    {
+      "name": "PWEB",
+      "id": 1
+    },
+    {
+      "name": "POB",
+      "id": 2
+    },
+    {
+      "name": "Ética",
+      "id": 3
+    },
+    {
+      "name": "Segurança de Dados",
+      "id": 4
+    },
+    {
+      "name": "APS",
+      "id": 5
+    },
+    {
+      "name": "Legislacao",
+      "id": 6
+    }
+  ],
   "teachers": [
     {
       "email": "joaomarcos77777.jm@gmail.com",
@@ -10,6 +35,11 @@
       "email": "caca@gmail.com",
       "password": "123456",
       "id": 2
+    },
+    {
+      "email": "canalapoiopb@gmail.com",
+      "password": "123456",
+      "id": 3
     }
   ],
   "students": [

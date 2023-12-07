@@ -38,6 +38,6 @@ export class SubjectService {
   }
 
   editSubject(subject: Subject, idsubject:number): Observable<Subject> {
-    return this.httpClient.put<Subject>(`${this.subjectEndpoint}/${idsubject}`, subject)
+    return this.httpClient.patch<Subject>(`${this.subjectEndpoint}/${idsubject}`, subject)
   }
 }
