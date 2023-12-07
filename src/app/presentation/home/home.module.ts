@@ -40,6 +40,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { firebaseConfig } from 'src/firebase.config';
 import { FirestoreModule } from 'src/firestore/firestore.module';
 import { MatIconModule } from '@angular/material/icon';
+import { MaintainNotasComponent } from './notas/maintain-notas/maintain-notas.component';
 
 
 
@@ -49,7 +50,7 @@ import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [HomeComponent, TimelineComponent,FaltasComponent,
     AvisosComponent,HorarioComponent,SidebarComponent, NotasComponent, TurmasComponent,
-     DesempenhoComponent, SettingsComponent, DesempenhoturmaComponent, CadastronotasComponent, CadastroavisosComponent, AlunosComponent],
+     DesempenhoComponent, SettingsComponent, DesempenhoturmaComponent, CadastronotasComponent, CadastroavisosComponent, AlunosComponent, MaintainNotasComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(HomeRoutes),

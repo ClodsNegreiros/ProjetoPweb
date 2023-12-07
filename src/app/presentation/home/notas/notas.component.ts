@@ -41,11 +41,11 @@ export class NotasComponent implements OnInit{
         (grades:Grade[])=>{
 
           grades.filter((grade:Grade)=>{
-            return grade.student.email==="joao.chaves@academico.ifpb.edu.br"
+            return grade.studentemail==="joao.chaves@academico.ifpb.edu.br"
           })
 
           grades.map((grade:Grade)=>{
-            this.notas.push({materia:grade.subject.name,nota:grade.value})
+            this.notas.push({materia:grade.subjectname,nota:grade.value})
           })
          this.dataSource=new MatTableDataSource(this.notas)
         }

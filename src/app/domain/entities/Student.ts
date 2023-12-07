@@ -5,7 +5,7 @@ export interface IStudent {
   name?: string;
   age?: number;
   email?: string;
-  subjects?: string[];
+  subjects: string[];
   password?: string;
 }
 
@@ -14,7 +14,7 @@ export class Student {
   name?: string;
   age?: number;
   email?: string;
-  subjects?: string[];
+  subjects: string[];
   password?:string;
 
   constructor(student: IStudent) {

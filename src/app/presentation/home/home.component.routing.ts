@@ -13,6 +13,7 @@ import { SettingsComponent } from "./settings/settings.component";
 import { AlunosComponent } from "./alunos/alunos.component";
 import { CadastroavisosComponent } from "./cadastroavisos/cadastroavisos.component";
 import { CadastronotasComponent } from "./cadastronotas/cadastronotas.component";
+import { MaintainNotasComponent } from "./notas/maintain-notas/maintain-notas.component";
 
 export const HomeRoutes: Route[] = [
     {
@@ -55,6 +56,10 @@ export const HomeRoutes: Route[] = [
             {
                 path:"settings",
                 component:SettingsComponent
+            },
+            {
+                path:"maintain-grade/:id",
+                component:MaintainNotasComponent
             }
         ]
      }

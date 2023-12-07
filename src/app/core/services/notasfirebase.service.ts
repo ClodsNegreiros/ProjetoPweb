@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {from, Observable} from 'rxjs';
-import {Grade} from '../../domain/entities/Grade';
+import {Grade, IGrade} from '../../domain/entities/Grade';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
 import {map} from 'rxjs/operators';
 import {Subject} from '../../domain/entities/Subject'

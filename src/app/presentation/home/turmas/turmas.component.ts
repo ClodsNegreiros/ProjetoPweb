@@ -39,16 +39,16 @@ export class TurmasComponent implements OnInit{
     }
   
     const {materia} = this.TurmaForm.value;
-
+    
     const user = JSON.parse(window.localStorage.getItem('user') ?? '')
 
     this.studentservice.getStudentById(user.id!).subscribe((student:Student)=>{
-      this.student=student;
-      this.student.subjects?.push(materia);
-      console.log(this.student)
-    })
+      const aluno = new Student({id:student.id,email:student.email,name:student.name,password:student.password,subjects:student.subjects})
+      aluno.subjects.push(materia)
 
-    this.studentservice.editStudent(this.student!,user.id!).subscribe(()=>{
+      console.log(aluno)
+        
+    this.studentservice.editStudent(aluno,user.id!).subscribe(()=>{
       this._matsnackbar.open(
         
         `Inscrito na turma com sucesso!`,
@@ -60,6 +60,11 @@ export class TurmasComponent implements OnInit{
         }
       )
     });
+      
+    })
+
+
+ 
 
   }
 

@@ -40,19 +40,30 @@
       "email": "canalapoiopb@gmail.com",
       "password": "123456",
       "id": 3
+    },
+    {
+      "email": "caiocostaee@gmail.com",
+      "password": "joao123",
+      "id": 4
     }
   ],
   "students": [
     {
-      "name": "Guga WAG",
-      "email": "joao.chaves@academico.ifpb.edu.br",
-      "password": "13042003",
-      "id": 1,
+      "email": "Uriandooliveira@gmail.com",
       "subjects": [
-        {
-          "name": "PWEB"
-        }
-      ]
+        "Segurança de Dados",
+        "APS"
+      ],
+      "password": "222222",
+      "id": 4
+    },
+    {
+      "email": "joao.chaves@academico.ifpb.edu.br",
+      "subjects": [
+        "APS"
+      ],
+      "password": "13042003",
+      "id": 5
     }
   ],
   "grades": [

@@ -125,6 +125,7 @@ export class RegistrationComponent {
     const user = new Student({
       email: email,
       password: password,
+      subjects:[]
     });
 
     this._studentservice.addStudent(user as Student).subscribe(

@@ -33,7 +33,7 @@ export class CadastronotasComponent implements OnInit{
     (students:Student[])=>{
       this.alunos=students.filter((student:Student)=>{
         return student.subjects?.filter((subject:string)=>{
-          return subject==="PWEB"
+          return subject==="APS"
         })
       });
 
@@ -63,8 +63,8 @@ undirty(){
       const {valor,aluno}= this.GradeForm.value;
       const nota = new Grade("",{
         value:valor,
-        student:{name:aluno},
-        subject:{name:"PWEB"}
+        studentemail:aluno,
+        subjectname:"Pweb"
       });
       this._notasservice.inserir(nota).subscribe(()=>{
         this._matsnackbar.open(

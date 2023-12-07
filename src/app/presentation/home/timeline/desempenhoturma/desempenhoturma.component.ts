@@ -13,7 +13,7 @@ import { Subject } from 'src/app/domain/entities/Subject';
 export class DesempenhoturmaComponent {
   grades: Grade[] = [];
 
-  displayedColumns: string[] = ['aluno', 'nota', 'actions'];
+  displayedColumns: string[] = ['aluno', 'nota','materia', 'actions'];
 
   constructor(
     private notaservice : NotasFirebaseService,
@@ -41,9 +41,10 @@ export class DesempenhoturmaComponent {
               duration: 4000,
             }
           );
+          this.notaservice.listar().subscribe((grades:Grade[])=>{
+            this.grades=grades;
+          })
         }
-
-        window.location.reload();
       },
       (error) => {
         console.error('Erro ao excluir a matéria', error);
