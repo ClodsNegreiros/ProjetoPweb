@@ -50,16 +50,21 @@ export class LoginComponent {
       }
 
       const { email, password } = this.LoginForm.value;
-      const userRole = this.verifyUserRole(email);
+      const userRole = await this.verifyUserRole(email);
 
       if (userRole === 'teacher') {
-        await this._AuthService.canAuthTeacher(email, password).toPromise();
-        this._router.navigate(['/home']);
+        const isAuthenticated = await this._AuthService.canAuthTeacher(email, password).toPromise();
+        if (!isAuthenticated) {
+          throw new Error('Erro ao tentar autenticar professor.');
+        }
       } else {
-        await this._AuthService.canAuthStudent(email, password).toPromise();
-        this._router.navigate(['/home']);
+        const isAuthenticated = await this._AuthService.canAuthStudent(email, password).toPromise();
+        if (!isAuthenticated) {
+          throw new Error('Erro ao tentar autenticar estudante.');
+        }
       }
 
+      this._router.navigate(['/home']);
     } catch (error) {
       this._snackBar.open(
         `Senha/email incorreto. Por favor, tente novamente.`,
@@ -74,10 +79,13 @@ export class LoginComponent {
     }
   }
 
-  verifyUserRole(email: string): any {
-    this._userService.getUserRole(email).subscribe((userRole) => {
-      console.log(userRole);
-      return userRole;
+  async verifyUserRole(email: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this._userService.getUserRole(email).subscribe((userRole) => {
+        resolve(userRole);
+      }, (error) => {
+        reject(error);
+      });
     });
   }
 }
