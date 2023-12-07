@@ -6,14 +6,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  @Input() menuIcon: string = '';
-  @Input() menuActions: IMenuActions[] = []
+  @Input()
+  LinkSignin!: string;
+  @Input()
+  LinkSignup!: string;
+  @Input() MenuHome:boolean=false;
 }
 
-export interface IMenuActions {
-  icon: string;
-  text: string;
-  iconColor?: string;
-  routerLinkName?: string;
-  funcAction?: (item?: any) => void;
-}
+

@@ -1,17 +1,14 @@
-<button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-  <mat-icon>
-    {{ menuIcon }}
-  </mat-icon>
-</button>
 
-<mat-menu #menu="matMenu">
-  <button mat-menu-item *ngFor="let action of menuActions" (click)="action.funcAction ? action.funcAction : null" [routerLink]="action.routerLinkName">
-    <mat-icon [color]="action.iconColor">{{ action.icon }}</mat-icon>
 
-    <a *ngIf="action.routerLinkName" >{{ action.text }}</a>
 
-    <span *ngIf="!action.routerLinkName">
-      {{ action.text }}
-    </span>
-  </button>
-</mat-menu>
+<div fxLayout="row" fxLayoutAlign="space-around" style="width: 200px;">
+
+  <div><a [routerLink]="LinkSignin">Sign in</a></div>
+  <div><a [routerLink]="LinkSignup">Sign up</a></div>
+
+</div>
+
+
+
+
+

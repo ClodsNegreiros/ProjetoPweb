@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { IMenuActions } from 'src/app/core/components/menu/menu.component';
+
 import { SubjectService } from 'src/app/core/services/subject.service';
 import { Subject } from 'src/app/domain/entities/Subject';
 
@@ -14,20 +14,6 @@ export class ListSubjectComponent {
   subjects: Subject[] = [];
 
   displayedColumns: string[] = ['id', 'name', 'actions'];
-
-  menuActions: IMenuActions[] = [
-    {
-      icon: 'edit',
-      text: 'Editar',
-      iconColor: 'primary',
-      funcAction: this.deleteSubject.bind(this)
-    },
-    {
-      icon: 'delete',
-      text: 'Deletar',
-      iconColor: 'warn'
-    }
-  ]
 
   constructor(
     private subjectService: SubjectService,

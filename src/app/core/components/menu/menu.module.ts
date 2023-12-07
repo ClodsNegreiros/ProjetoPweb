@@ -6,6 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 
 import { MenuComponent } from './menu.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { MenuComponent } from './menu.component';
     MatMenuModule,
     MatIconModule,
     RouterModule,
+    FlexLayoutModule
   ],
   exports: [
     MenuComponent

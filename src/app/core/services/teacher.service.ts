@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Teacher } from 'src/app/domain/entities/Teacher';
 
 @Injectable({
@@ -6,28 +8,40 @@ import { Teacher } from 'src/app/domain/entities/Teacher';
 })
 export class TeacherService {
 
-  teachers: Teacher[] = [
-    {
-      id: 1,
-      email: 'sara@gmail.com',
-      name: 'Sara'
-    },
-    {
-      id: 2,
-      email: 'gustavowagner@gmail.com',
-      name: 'Gustavo'
-    }
-  ]
+ 
 
-  constructor() { }
+  TeacherEndpoint: string = 'http://localhost:3000/teachers';
 
-  getTeachers(): Teacher[] {
-    return this.teachers;
+  teachers: Teacher[] = [];
+  //private nextId: number = 1;
+
+  constructor(
+    private httpClient: HttpClient,
+  ) {}
+
+  getTeachers(): Observable<Teacher[]> {
+    return this.httpClient.get<Teacher[]>(this.TeacherEndpoint);
   }
 
-  getTeacher(teacherId: number) {
-    return this.teachers.find(teacher => {
-      teacher.id === teacherId;
-    })
+
+  addTeacher(Teacher: Teacher): Observable<Teacher> {
+    return this.httpClient.post<Teacher>(this.TeacherEndpoint, Teacher);
   }
+
+  deleteTeacher(TeacherId: number | undefined): Observable<Object> {
+    return this.httpClient.delete(`${this.TeacherEndpoint}/${TeacherId}`);
+  }
+
+  getTeacherById(TeacherId: number): Observable<Teacher> {
+    return this.httpClient.get<Teacher>(`${this.TeacherEndpoint}/${TeacherId}`)
+  }
+
+  editTeacher(Teacher: Teacher, idTeacher:number): Observable<Teacher> {
+    return this.httpClient.put<Teacher>(`${this.TeacherEndpoint}/${idTeacher}`, Teacher)
+  }
+
+  getTeacherbyemail(email:string):Observable<Teacher[]>{
+    return this.httpClient.get<Teacher[]>(`${this.TeacherEndpoint}/?email=${email}`);
+  }
+
 }

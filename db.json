@@ -1,6 +1,215 @@
 {
-  "subjects": [],
-  "teachers": [],
-  "students": [],
-  "grades": []
+  "subjects": [
+    {
+      "name": "PWEB",
+      "id": 1
+    },
+    {
+      "name": "POB",
+      "id": 2
+    },
+    {
+      "name": "Ética",
+      "id": 3
+    },
+    {
+      "name": "Segurança de Dados",
+      "id": 4
+    },
+    {
+      "name": "APS",
+      "id": 5
+    },
+    {
+      "name": "Legislacao",
+      "id": 6
+    }
+  ],
+  "teachers": [
+    {
+      "email": "joaomarcos77777.jm@gmail.com",
+      "password": "1111111111111111111111",
+      "id": 1
+    },
+    {
+      "email": "caca@gmail.com",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "email": "canalapoiopb@gmail.com",
+      "password": "123456",
+      "id": 3
+    },
+    {
+      "email": "caiocostaee@gmail.com",
+      "password": "joao123",
+      "id": 4
+    }
+  ],
+  "students": [
+    {
+      "email": "Uriandooliveira@gmail.com",
+      "subjects": [
+        "Segurança de Dados",
+        "APS"
+      ],
+      "password": "222222",
+      "id": 4
+    },
+    {
+      "email": "joao.chaves@academico.ifpb.edu.br",
+      "subjects": [
+        "APS"
+      ],
+      "password": "13042003",
+      "id": 5
+    }
+  ],
+  "grades": [
+    {
+      "value": "10",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 1
+    },
+    {
+      "value": "10",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 2
+    },
+    {
+      "value": "5",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 3
+    },
+    {
+      "value": "5",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 4
+    },
+    {
+      "value": "1",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 5
+    },
+    {
+      "value": "1",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 6
+    },
+    {
+      "value": "3",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 7
+    },
+    {
+      "value": "3",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 8
+    },
+    {
+      "value": "1",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 9
+    },
+    {
+      "value": "1",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 10
+    },
+    {
+      "value": "2",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 11
+    },
+    {
+      "value": "2",
+      "student": {
+        "name": "Guga WAG"
+      },
+      "subject": {
+        "name": "PWEB"
+      },
+      "id": 12
+    }
+  ],
+  "users": [
+    {
+      "email": "joaomarcos77777.jm@gmail.com",
+      "isaluno": true,
+      "id": 1
+    },
+    {
+      "email": "dudujampa6@hotmail.com",
+      "isaluno": true,
+      "id": 2
+    },
+    {
+      "email": "joao.chaves@academico.ifpb.edu.br",
+      "senha": "13042003",
+      "isaluno": true,
+      "id": 3
+    },
+    {
+      "email": "canalapoiopb@gmail.com",
+      "senha": "1234",
+      "isaluno": false,
+      "id": 4
+    }
+  ]
 }

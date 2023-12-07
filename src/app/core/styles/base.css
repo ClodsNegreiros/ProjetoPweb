@@ -17,3 +17,8 @@ a {
 button {
   border: 0;
 }
+
+a:active, a, a:link,a:visited{
+  text-decoration: none;
+  color:black;
+}

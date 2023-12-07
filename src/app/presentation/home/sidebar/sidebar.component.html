@@ -1,0 +1,45 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark mainside">
+    <a href="/home" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Gnosis Educação</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto" >
+      <li class="nav-item">
+        <a href="/home" class="nav-link active" aria-current="page" >
+          <i class="fa-solid fa-house me-2" width="16" height="16"></i>
+          Home
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="actionsUser.menu1[1]" class="nav-link text-white">
+          <i class="fa-solid fa-house me-2" width="16" height="16"></i>
+          {{actionsUser.menu1[0]}}
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="actionsUser.menu2[1]" class="nav-link text-white">
+          <i class="fa-solid fa-house me-2" width="16" height="16"></i>
+          {{actionsUser.menu2[0]}}
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="actionsUser.menu3[1]" class="nav-link text-white">
+          <i class="fa-solid fa-house me-2" width="16" height="16"></i>
+          {{actionsUser.menu3[0]}}
+        </a>
+      </li>
+    </ul>
+        <hr>
+            <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-regular fa-user rounded-circle me-2"></i>
+                <strong style="font-size: 10px;">{{userlogged?.email}}</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" routerLink="/home/settings">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><button class="dropdown-item" (click)="logout()">Sign out</button></li>
+            </ul>
+        </div>
+    </div>

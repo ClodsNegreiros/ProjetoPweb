@@ -24,11 +24,6 @@ export class SubjectService {
     return this.httpClient.get<Subject[]>(this.subjectEndpoint);
   }
 
-  getSubject(subjectId: number) {
-   this.getSubjects().pipe(
-      map((subjects) => subjects.find(subject => subject.id === subjectId))
-    );
-  }   
 
   addSubject(subject: Subject): Observable<Subject> {
     return this.httpClient.post<Subject>(this.subjectEndpoint, subject);
@@ -38,11 +33,11 @@ export class SubjectService {
     return this.httpClient.delete(`${this.subjectEndpoint}/${subjectId}`);
   }
 
-  searchSubjectById(subjectId: number): Observable<Subject> {
+  getSubjectById(subjectId: number): Observable<Subject> {
     return this.httpClient.get<Subject>(`${this.subjectEndpoint}/${subjectId}`)
   }
 
-  editSubject(subject: Subject): Observable<Subject> {
-    return this.httpClient.put<Subject>(`${this.subjectEndpoint}/${subject.id}`, subject)
+  editSubject(subject: Subject, idsubject:number): Observable<Subject> {
+    return this.httpClient.patch<Subject>(`${this.subjectEndpoint}/${idsubject}`, subject)
   }
 }

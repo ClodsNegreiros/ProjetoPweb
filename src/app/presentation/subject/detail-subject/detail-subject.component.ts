@@ -22,7 +22,7 @@ export class DetailSubjectComponent {
   ngOnInit(): void {
     this._route.params.subscribe((params) => {
       this.id = params['id'];
-      this._subjectService.searchSubjectById(parseInt(this.id)).subscribe(
+      this._subjectService.getSubjectById(parseInt(this.id)).subscribe(
         (subject) => {
           this.subject = subject;
         }

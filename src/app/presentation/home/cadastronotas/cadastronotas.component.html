@@ -1,0 +1,45 @@
+
+<mat-card class="cadastro">
+    <mat-card-header>
+      <mat-card-title class="color-dark-grey">Cadastro de Notas:</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="GradeForm" (ngSubmit)="onSubmit()" action="">
+        <div class="form">
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              placeholder="Valor"
+              name="valor"
+              formControlName="valor"
+            >
+            <mat-error *ngIf="GradeForm.get('valor')?.dirty && GradeForm.get('valor')?.hasError('required')">
+              Campo obrigatório
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select
+              name="aluno"
+              placeholder="Selecione o aluno"
+              formControlName="aluno"
+            >
+              <mat-option *ngFor="let aluno of alunos" [value]="aluno.email">
+                {{ aluno.email}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="GradeForm.get('aluno')?.dirty && GradeForm.get('aluno')?.hasError('required')">
+              Campo obrigatório
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+
+        <button mat-raised-button color="primary">
+          Cadastrar!
+        </button>
+      </form>
+    </mat-card-content>
+
+  </mat-card>
