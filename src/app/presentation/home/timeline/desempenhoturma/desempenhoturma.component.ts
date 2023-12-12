@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Chart } from 'chart.js';
 import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
 import { SubjectService } from 'src/app/core/services/subject.service';
 import { Grade } from 'src/app/domain/entities/Grade';
@@ -10,7 +11,7 @@ import { Subject } from 'src/app/domain/entities/Subject';
   templateUrl: './desempenhoturma.component.html',
   styleUrls: ['./desempenhoturma.component.css']
 })
-export class DesempenhoturmaComponent {
+export class DesempenhoturmaComponent implements OnInit{
   grades: Grade[] = [];
 
   displayedColumns: string[] = ['aluno', 'nota','materia', 'actions'];

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AvisoService } from 'src/app/core/services/aviso.service';
 import { Aviso } from 'src/app/domain/entities/Aviso';
 
 @Component({
@@ -6,13 +7,16 @@ import { Aviso } from 'src/app/domain/entities/Aviso';
   templateUrl: './avisos.component.html',
   styleUrls: ['./avisos.component.css']
 })
-export class AvisosComponent {
-avisos: Aviso[]= [
-  {
-    teacher:"Gustavo Wag",
-    header:"Aula adiada!",
-    text:"pessoal estou enfermo."
-  }
-]
+export class AvisosComponent implements OnInit {
+avisos: Aviso[]= []
+
+constructor(private avisosservice:AvisoService){
+}
+
+ngOnInit(): void {
+    this.avisosservice.getavisos().subscribe((avisos:Aviso[])=>{
+      this.avisos=avisos;
+    })
+}
 
 }
