@@ -15,7 +15,12 @@ constructor(private avisosservice:AvisoService){
 
 ngOnInit(): void {
     this.avisosservice.getavisos().subscribe((avisos:Aviso[])=>{
-      this.avisos=avisos;
+      if(JSON.parse(window.localStorage.getItem('user')?? "").type=='professor'){
+        this.avisos= avisos.filter((aviso:Aviso)=>aviso.teacher===JSON.parse(window.localStorage.getItem('user')?? "").email)
+      }
+      else{
+        this.avisos= avisos;
+      }
     })
 }
 

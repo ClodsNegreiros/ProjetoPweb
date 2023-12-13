@@ -97,7 +97,8 @@ export class RegistrationComponent {
             duration: 4000,
           }
         );
-        this._router.navigate(['/login']);
+        window.localStorage.setItem("user",JSON.stringify({...user,type:"professor"}))
+        this._router.navigate(['/registration/account-settings']);
       },
       (error) => {
         this._snackBar.open(
@@ -131,7 +132,7 @@ export class RegistrationComponent {
     this._studentservice.addStudent(user as Student).subscribe(
       (user: Student) => {
         this._snackBar.open(
-          `o Usuário foi cadastrado com sucesso! Faça seu Login.`,
+          `o Usuário foi cadastrado com sucesso! Preencha suas informações`,
           'Ok',
           {
             horizontalPosition: 'right',
@@ -139,7 +140,8 @@ export class RegistrationComponent {
             duration: 4000,
           }
         );
-        this._router.navigate(['/login']);
+        window.localStorage.setItem("user",JSON.stringify({...user,type:"aluno"}))
+        this._router.navigate(['/registration/account-settings']);
       },
       (error) => {
         this._snackBar.open(

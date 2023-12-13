@@ -83,6 +83,17 @@
       ],
       "password": "123123",
       "id": 7
+    },
+    {
+      "email": "juliana@gmail.com",
+      "subjects": [],
+      "password": "123456",
+      "id": 8,
+      "name": "Juliana Ferreira",
+      "age": "20",
+      "telefone": "83994136513",
+      "endereco": "Joao Cabral de Lucena,680",
+      "instituicao": "IFPB"
     }
   ],
   "grades": [],

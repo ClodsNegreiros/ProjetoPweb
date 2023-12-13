@@ -12,9 +12,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { AccountsettingsComponent } from './accountsettings/accountsettings.component';
 
 @NgModule({
-  declarations: [RegistrationComponent],
+  declarations: [RegistrationComponent, AccountsettingsComponent],
   imports: [
     CommonModule,
     MatCardModule,

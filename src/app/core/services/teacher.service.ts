@@ -37,7 +37,7 @@ export class TeacherService {
   }
 
   editTeacher(Teacher: Teacher, idTeacher:number): Observable<Teacher> {
-    return this.httpClient.put<Teacher>(`${this.TeacherEndpoint}/${idTeacher}`, Teacher)
+    return this.httpClient.patch<Teacher>(`${this.TeacherEndpoint}/${idTeacher}`, Teacher)
   }
 
   getTeacherbyemail(email:string):Observable<Teacher[]>{

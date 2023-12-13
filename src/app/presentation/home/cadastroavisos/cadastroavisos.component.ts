@@ -13,7 +13,7 @@ import { Aviso } from 'src/app/domain/entities/Aviso';
 })
 export class CadastroavisosComponent{
 
-nometeacher:string=JSON.parse(window.localStorage.getItem('user') ?? '').email;;
+nometeacher:string=JSON.parse(window.localStorage.getItem('user') ?? '').email;
 
 FormAviso:FormGroup;
 
