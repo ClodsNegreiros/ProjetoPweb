@@ -64,7 +64,7 @@ undirty(){
       const nota = new Grade("",{
         value:valor,
         studentemail:aluno,
-        subjectname:"Pweb"
+        subjectname:"APS"
       });
       this._notasservice.inserir(nota).subscribe(()=>{
         this._matsnackbar.open(
@@ -82,7 +82,7 @@ undirty(){
     }
     else{
       this._matsnackbar.open(
-        `Erro no cadastro da nota!`,
+        `Erro no cadastro da nota.Tente Novamente!`,
         'Ok',
         {
           horizontalPosition: 'right',

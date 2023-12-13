@@ -1,5 +1,7 @@
 
-<mat-card id="container-timeline" *ngFor="let aviso of avisos">
+<div *ngFor="let aviso of avisos">
+
+<mat-card id="container-timeline" >
 
     <div class="card mt-5">
         <h5 class="card-header">{{aviso.teacher}} </h5>
@@ -8,7 +10,10 @@
           <p class="card-text">{{aviso.text}}</p>
         </div>
         <div class="card-footer text-body-secondary">
-            2 dias atrás 
+          {{aviso.hora}}
           </div>
       </div>
+
   </mat-card>
+
+  </div>

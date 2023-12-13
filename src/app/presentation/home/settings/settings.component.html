@@ -1,1 +1,79 @@
-<p>settings works!</p>
+<div class="container-xl px-4 mt-4">
+    <!-- Account page navigation-->
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Profile Picture</div>
+                <div class="card-body text-center">
+                    <!-- Profile picture image-->
+                    <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                    <!-- Profile picture help block-->
+                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                    <!-- Profile picture upload button-->
+                    <button class="btn btn-primary" type="button">Upload new image</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                    <form [formGroup]="formsettings" (ngSubmit)="OnSubmit()">
+                        <!-- Form Group (username)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername">Seu Nome:</label>
+                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username"  formControlName="nome">
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">Instituição:</label>
+                                <input class="form-control" id="inputFirstName" type="text"  formControlName="instituicao">
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Tipo: </label>
+                                <input class="form-control" id="inputLastName" type="text"  readonly formControlName="tipo">
+                            </div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLocation">Endereço</label>
+                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" formControlName="endereco" >
+                            </div>
+                        </div>
+                        <!-- Form Group (email address)-->
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput  placeholder="Ex. pat@example.com" formControlName="email" readonly>
+                          </mat-form-field>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (phone number)-->
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Telefone</mat-label>
+                                <span matPrefix>+55 &nbsp;</span>
+                                <input type="tel" matInput placeholder="555-555-1234" formControlName="telefone">
+                                <mat-icon matSuffix>mode_edit</mat-icon>
+                              </mat-form-field>
+
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputBirthday">Idade</label>
+                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" formControlName="idade">
+                            </div>
+                        </div>
+                        <!-- Save changes button-->
+                        <button class="btn btn-primary" type="button">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

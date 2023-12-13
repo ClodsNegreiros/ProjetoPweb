@@ -29,7 +29,8 @@
     {
       "email": "joaomarcos77777.jm@gmail.com",
       "password": "1111111111111111111111",
-      "id": 1
+      "id": 1,
+      "subjects": "[\"PWEB\",\"POB\"]"
     },
     {
       "email": "caca@gmail.com",
@@ -64,9 +65,54 @@
       ],
       "password": "13042003",
       "id": 5
+    },
+    {
+      "email": "alic@gmail.com",
+      "subjects": [
+        "PWEB",
+        "APS"
+      ],
+      "password": "123456",
+      "id": 6
+    },
+    {
+      "email": "clodoaldo.negreiros@gmail.com",
+      "subjects": [
+        "POB",
+        "APS"
+      ],
+      "password": "123123",
+      "id": 7
+    },
+    {
+      "email": "juliana@gmail.com",
+      "subjects": [],
+      "password": "123456",
+      "id": 8,
+      "name": "Juliana Ferreira",
+      "age": "20",
+      "telefone": "83994136513",
+      "endereco": "Joao Cabral de Lucena,680",
+      "instituicao": "IFPB"
     }
   ],
   "grades": [],
+  "avisos": [
+    {
+      "teacher": "joaomarcos77777.jm@gmail.com",
+      "header": "aula normal amanha pessoal",
+      "text": "gente tudo bem",
+      "hora": "18:28:4",
+      "id": 1
+    },
+    {
+      "teacher": "joaomarcos77777.jm@gmail.com",
+      "header": "ESTOU DOENTE",
+      "text": "pessoal! nao tem aula hj",
+      "hora": "18:28:10",
+      "id": 2
+    }
+  ],
   "users": [
     {
       "email": "joaomarcos77777.jm@gmail.com",

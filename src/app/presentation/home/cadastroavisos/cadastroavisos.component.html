@@ -1,1 +1,55 @@
-<p>cadastroavisos works!</p>
+
+<mat-card class="cadastro">
+    <mat-card-header>
+      <mat-card-title class="color-dark-grey">Cadastro de Avisos:</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="FormAviso" (ngSubmit)="OnSubmit()" action="">
+
+        <div class="form">
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              placeholder="teacher"
+              name="teacher"
+              formControlName="teacher"
+              readonly
+            >
+            <mat-error *ngIf="FormAviso.get('teacher')?.dirty && FormAviso.get('teacher')?.hasError('required')">
+              Campo obrigatório
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              placeholder="Insira o texto aqui"
+              name="text"
+              formControlName="text"
+            >
+            <mat-error *ngIf="FormAviso.get('text')?.dirty && FormAviso.get('text')?.hasError('required')">
+              Campo obrigatório
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              placeholder=" Insira o header"
+              name="header"
+              formControlName="header"
+            >
+            <mat-error *ngIf="FormAviso.get('header')?.dirty && FormAviso.get('header')?.hasError('required')">
+              Campo obrigatório
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary">
+          Cadastrar!
+        </button>
+      </form>
+    </mat-card-content>
+
+  </mat-card>

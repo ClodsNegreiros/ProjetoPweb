@@ -35,7 +35,7 @@ export class StudentService {
   }
 
   editStudent(Student: Student, idStudent:number): Observable<Student> {
-    return this.httpClient.put<Student>(`${this.StudentEndpoint}/${idStudent}`, Student)
+    return this.httpClient.patch<Student>(`${this.StudentEndpoint}/${idStudent}`, Student)
   }
 
   getStudentbyemail(email:string):Observable<Student[]>{
