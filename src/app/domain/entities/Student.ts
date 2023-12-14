@@ -1,11 +1,13 @@
+import { Grade } from "./Grade";
 import { ISubject, Subject } from "./Subject";
 
 export interface IStudent {
   id?:number;
-  name?: string;
-  age?: string;
+  nome?: string;
+  idade?: string;
   email?: string;
-  subjects: string[];
+  subjects?: string[];
+  grades?:Grade[];
   password?: string;
   telefone?:string;
   endereco?:string;
@@ -14,23 +16,25 @@ export interface IStudent {
 
 export class Student {
   id?:number;
-  name?: string;
-  age?: string;
+  nome?: string;
+  idade?: string;
   email?: string;
-  subjects: string[];
+  subjects?: string[]
+  grades?:Grade[]
   password?:string;
   telefone?:string;
   endereco?:string;
   instituicao?:string;
 
-  constructor(student: IStudent) {
-    this.name = student.name;
-    this.age = student.age;
+  constructor(student: IStudent={}) {
+    this.nome = student.nome;
+    this.idade = student.idade;
     this.email = student.email;
    this.subjects = student.subjects;
     this.password= student.password;
     this.telefone=student.telefone;
     this.endereco=student.endereco;
     this.instituicao=student.instituicao;
+    this.grades=student.grades;
   }
 }

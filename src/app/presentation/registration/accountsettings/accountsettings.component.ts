@@ -50,7 +50,7 @@ async OnSubmit(){
   const {nome,idade,telefone,endereco,instituicao}= this.AccountForm.value;
 
   if(this.logged as Student){
-    const user= new Student({subjects:this.session.subjects,name:nome,telefone:telefone,endereco:endereco,instituicao:instituicao,age:idade,email:this.logged?.email})
+    const user= new Student({id:this.session.id,subjects:this.session.subjects,nome:nome,telefone:telefone,endereco:endereco,instituicao:instituicao,idade:idade,email:this.logged?.email})
     this.studentservice.editStudent(user,this.session.id).subscribe(()=>{
       this.snackbar.open(
         `o Usuário foi cadastrado com sucesso! Preencha suas informações`,
@@ -65,7 +65,7 @@ async OnSubmit(){
     })
   }
   else if(this.logged as Teacher){
-    const user= new Teacher({name:nome,telefone:telefone,endereco:endereco,instituicao:instituicao,age:idade,email:this.logged?.email})
+    const user= new Teacher({nome:nome,telefone:telefone,endereco:endereco,instituicao:instituicao,idade:idade,email:this.logged?.email})
     this.teacherservice.editTeacher(user,this.session.id).subscribe(()=>{
       this.snackbar.open(
         `o Usuário foi cadastrado com sucesso! Preencha suas informações`,
