@@ -8,7 +8,7 @@ import { Student } from 'src/app/domain/entities/Student';
 })
 export class StudentService {
 
-  StudentEndpoint: string = 'http://localhost:3000/Students';
+  StudentEndpoint: string = 'http://localhost:8080/students';
 
   Students: Student[] = [];
   //private nextId: number = 1;
@@ -35,11 +35,11 @@ export class StudentService {
   }
 
   editStudent(Student: Student, idStudent:number): Observable<Student> {
-    return this.httpClient.patch<Student>(`${this.StudentEndpoint}/${idStudent}`, Student)
+    return this.httpClient.put<Student>(`${this.StudentEndpoint}/${idStudent}`, Student)
   }
 
   getStudentbyemail(email:string):Observable<Student[]>{
-    return this.httpClient.get<Student[]>(`${this.StudentEndpoint}/?email=${email}`);
+    return this.httpClient.get<Student[]>(`${this.StudentEndpoint}/byemail?email=${email}`);
   }
 
 }

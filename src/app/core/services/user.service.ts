@@ -17,20 +17,20 @@ export class UserService {
   ) {}
 
   getStudentbyemail(email:string):Observable<Student[]>{
-    return this.httpclient.get<Student[]>(`http://localhost:3000/Students/?email=${email}`)
+    return this.httpclient.get<Student[]>(`http://localhost:8080/students/byemail?email=${email}`)
   }
 
    getTeacherbyemail(email:string):Observable<Teacher[]>{
-    return this.httpclient.get<Teacher[]>(`http://localhost:3000/Teachers/?email=${email}`)
+    return this.httpclient.get<Teacher[]>(`http://localhost:8080/teachers?email=${email}`)
   }
 
   getUserRole(email: string): Observable<string> {
-    return this.teacherservice.getTeacherbyemail(email).pipe(
-      map((teacher: Teacher[]) => {
-        if (teacher.length > 0) {
-          return 'teacher';
-        } else {
+    return this.studentservice.getStudentbyemail(email).pipe(
+      map((student: Student[]) => {
+        if (student.length > 0) {
           return 'student';
+        } else {
+          return 'teacher';
         }
       })
     );

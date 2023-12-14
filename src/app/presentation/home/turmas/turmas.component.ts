@@ -40,11 +40,11 @@ export class TurmasComponent implements OnInit{
   
     const {materia} = this.TurmaForm.value;
     
-    const user = JSON.parse(window.localStorage.getItem('user') ?? '')
+    const user = JSON.parse(window.localStorage.getItem('user') ?? '');
 
     this.studentservice.getStudentById(user.id!).subscribe((student:Student)=>{
-      const aluno = new Student({id:student.id,email:student.email,name:student.name,password:student.password,subjects:student.subjects})
-      aluno.subjects.push(materia)
+      const aluno = new Student({id:student.id,email:student.email,nome:student.nome,password:student.password,subjects:student.subjects ?? []})
+      aluno.subjects?.push(materia)
 
       console.log(aluno)
         
