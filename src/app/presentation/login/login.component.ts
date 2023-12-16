@@ -52,7 +52,7 @@ export class LoginComponent {
       const { email, password } = this.LoginForm.value;
       const userRole = await this.verifyUserRole(email);
 
-      if (userRole === 'teacher') {
+      if (userRole=== 'teacher') {
         const isAuthenticated = await this._AuthService.canAuthTeacher(email, password).toPromise();
         if (!isAuthenticated) {
           throw new Error('Erro ao tentar autenticar professor.');

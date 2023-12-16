@@ -2,23 +2,22 @@ import { ISubject, Subject } from 'src/app/domain/entities/Subject';
 import { IStudent, Student } from "./Student";
 
 export interface IGrade {
-  id?:string;
-  value: string;
+  id?:number;
+  valor: string;
   student: string;
   subject: string;
 }
 
 export class Grade {
-  id?: string;
-  value: string;
-  studentemail: string;
-  subjectname: string;
+  id?: number;
+  valor?: string;
+  student?:Student;
+  subject?: Subject;
 
-  constructor(id?: string,grade: Grade = {value: '', studentemail:'',subjectname:''}) {
-    this.id = id;
-    this.value = grade.value;
-    this.subjectname =grade.subjectname;
-    this.studentemail = grade.studentemail;
+  constructor(grade: Grade = {valor: '', student:{},subject:{}}) {
+    this.valor = grade.valor;
+    this.subject =grade.subject;
+    this.student = grade.student;
     }
     
 }

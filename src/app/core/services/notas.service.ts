@@ -7,7 +7,7 @@ import { Grade } from 'src/app/domain/entities/Grade';
 })
 export class NotasService {
 
-  endpoint:string = "http://localhost:3000/grades"
+  endpoint:string = "http://localhost:8080/grades"
 
   constructor(private httpclient:HttpClient) { }
 

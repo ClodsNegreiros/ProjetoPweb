@@ -6,9 +6,12 @@ import { map } from 'rxjs';
 import { NotasService } from 'src/app/core/services/notas.service';
 import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
 import { StudentService } from 'src/app/core/services/student.service';
+import { SubjectService } from 'src/app/core/services/subject.service';
+import { TeacherService } from 'src/app/core/services/teacher.service';
 import { Grade } from 'src/app/domain/entities/Grade';
 import { Student } from 'src/app/domain/entities/Student';
 import { Subject } from 'src/app/domain/entities/Subject';
+import { Teacher } from 'src/app/domain/entities/Teacher';
 
 @Component({
   selector: 'app-cadastronotas',
@@ -16,12 +19,12 @@ import { Subject } from 'src/app/domain/entities/Subject';
   styleUrls: ['./cadastronotas.component.css']
 })
 export class CadastronotasComponent implements OnInit{
-
+  materia?:Subject;
   Notas: Grade[] = []
   alunos:Student[]=[]
   GradeForm: FormGroup
 
-  constructor(_router:Router,private _matsnackbar:MatSnackBar, private _notasservice:NotasFirebaseService,private _FormBuilder:FormBuilder,private _alunosservice:StudentService){
+  constructor(_router:Router,private _matsnackbar:MatSnackBar, private _notasservice:NotasService,private teacherssservice:TeacherService,private _FormBuilder:FormBuilder,private _alunosservice:StudentService){
     this.GradeForm= this._FormBuilder.group({
       "valor":['',[Validators.required]],
       "aluno":['',[Validators.required]]
@@ -57,16 +60,20 @@ undirty(){
   })
 }
 
-  onSubmit(){
+  async onSubmit(){
     this.checkvalidility();
     if(!this.GradeForm.invalid){
+     await this.teacherssservice.getTeacherById(JSON.parse(window.localStorage.getItem("user")?? "")).subscribe((
+        teacher:Teacher)=>{
+          this.materia=teacher.subject?
+        })
       const {valor,aluno}= this.GradeForm.value;
-      const nota = new Grade("",{
-        value:valor,
-        studentemail:aluno,
-        subjectname:"APS"
+      const nota = new Grade({
+        valor:valor,
+        student:,
+        subject:this.materia
       });
-      this._notasservice.inserir(nota).subscribe(()=>{
+      this._notasservice.addGrade(nota).subscribe(()=>{
         this._matsnackbar.open(
           `Nota cadastrada com sucesso!`,
           'Ok',

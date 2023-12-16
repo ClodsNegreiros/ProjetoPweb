@@ -5,7 +5,7 @@ import { Student } from 'src/app/domain/entities/Student';
 import { Teacher } from 'src/app/domain/entities/Teacher';
 
 interface IUser{
-  email:string;
+  nome:string;
   password?:string;
   type:string;
   id?:number;
@@ -29,7 +29,7 @@ actionsUser:IloggedUser;
 
 
 constructor(private _router:Router,private _snackbar : MatSnackBar){
-  this.userlogged={type:'',email:''}
+  this.userlogged={type:'',nome:''}
 this.actionsUser={menu1:[],menu2:[],menu3:[]}
 }
 
@@ -38,11 +38,11 @@ ngOnInit(): void {
     const user= JSON.parse(window.localStorage.getItem("user") ?? "" );
     console.log(user.type)
     if(user.type==="aluno"){
-      this.userlogged={email:user.email,type:user.type};
+      this.userlogged={nome:user.nome,type:user.type};
       this.actionsUser= {menu1:["Notas","/home/notas"],menu2:["Desempenho","/home/desempenho"],menu3:["Turmas",'/home/turmas']}
     }
     else{
-      this.userlogged={email:user.email,type:user.type};
+      this.userlogged={nome:user.nome,type:user.type};
       this.actionsUser= {menu1:["Cadastrar Avisos",'/home/cadastroavisos'],menu2:["Cadastrar Notas",'/home/cadastronotas'],menu3:["Meus Alunos",'/home/alunos']}
         }
 

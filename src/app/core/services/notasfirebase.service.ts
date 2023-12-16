@@ -48,20 +48,20 @@ export class NotasFirebaseService {
  }
 
 
- pesquisarPorId(id: string): Observable<Grade> {
+ //pesquisarPorId(id: string): Observable<Grade> {
    // como o objeto retornado pelo get é um DocumentData, e não um usuário, transformamos a partir de um pipe e mapeamos de um document
    //  para o tipo usuário
-   return this.colecaoNotas.doc(id).get().pipe(map(document => new Grade(document.id, document.data())));
- }
+  // return this.colecaoNotas.doc(id).get().pipe(map(document => new Grade(document.id, document.data())));
+ //}
 
 
- atualizar(grade: Grade): Observable<void> {
-const id = grade.id;
+ //atualizar(grade: Grade): Observable<void> {
+//const id = grade.id;
 // removendo id pois não vamos guardar nos dados do documento, mas sim usar apenas como id para recuperar o documento
-delete grade.id;
-return from(this.colecaoNotas.doc(id).update(Object.assign({}, grade)));
+//delete grade.id;
+//return from(this.colecaoNotas.doc(id).update(Object.assign({}, grade)));
 
 
- }
+ //}
 
 }

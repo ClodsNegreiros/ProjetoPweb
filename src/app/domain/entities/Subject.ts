@@ -2,14 +2,14 @@ import { ITeacher, Teacher } from "./Teacher";
 import { IStudent,Student } from "./Student";
 
 export interface ISubject {
-  name: string;
+  name?: string;
   teacher?: Teacher;
    student?: Student[]
 }
 
 export class Subject {
   id?:number;
-  name: string;
+  name?: string;
   teacher?: Teacher;
   student?: Student[]=[]
 
