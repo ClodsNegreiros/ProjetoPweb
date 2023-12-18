@@ -5,11 +5,12 @@ import { NotasService } from 'src/app/core/services/notas.service';
 import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
 import { Grade } from 'src/app/domain/entities/Grade';
 import { Student } from 'src/app/domain/entities/Student';
+import { Subject } from 'src/app/domain/entities/Subject';
 import { Teacher } from 'src/app/domain/entities/Teacher';
 
 export interface IGradeData{
-  nota:string;
-  materia:string
+  nota?:string;
+  materia?:Subject;
 }
 
 
@@ -26,7 +27,7 @@ export class NotasComponent implements OnInit{
   notas:IGradeData[];
 
 
-  constructor(private notasservico:NotasFirebaseService) {
+  constructor(private notasservico:NotasService) {
     this.notas=[]
     this.dataSource = new MatTableDataSource();
   }
@@ -37,20 +38,12 @@ export class NotasComponent implements OnInit{
   }
 
   ngOnInit(): void {
-      this.notasservico.listar().subscribe(
-        (grades:Grade[])=>{
-
-         const user: Student = JSON.parse( window.localStorage.getItem('user') ?? '')
-          console.log(grades);
-          grades.map((grade:Grade)=>{
-            if(user.email===grade.studentemail){
-              this.notas.push({nota:grade.value,materia:grade.subjectname});
-              this.dataSource= new MatTableDataSource(this.notas)
-            }
-          })
-         this.dataSource=new MatTableDataSource(this.notas)
-        }
-      )
+      this.notasservico.findbystudent(Number(this.userlogged.id)).subscribe((grades:Grade[])=>{
+        
+        grades.map((grade:Grade)=>{
+          this.notas.push({nota:grade.valor,materia:grade.subject})
+        })
+      })
   }
 
 

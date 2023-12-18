@@ -38,7 +38,7 @@ export class NotasFirebaseService {
  listarpormateria(subject:Subject):Observable<Grade[]>{
   let notasdamateria: AngularFirestoreCollection<Grade>;
   // fazendo pesquisas usando o where. Um where pode ser encadeado com outro
-  notasdamateria = this.afs.collection(this.NOME_COLECAO, ref => ref.where('subject', '==', subject.name));
+  notasdamateria = this.afs.collection(this.NOME_COLECAO, ref => ref.where('subject', '==', subject.nome));
   return notasdamateria.valueChanges();
  }
 

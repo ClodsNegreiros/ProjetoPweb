@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { NotasService } from 'src/app/core/services/notas.service';
 import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
 import { Grade } from 'src/app/domain/entities/Grade';
 
@@ -15,7 +16,7 @@ grade!:Grade;
 gradeid!:any
 gradeeditform : FormGroup
 
-constructor(private formbuilder:FormBuilder, private snackbar: MatSnackBar,private route:ActivatedRoute,private notasservico:NotasFirebaseService,private router:Router){
+constructor(private formbuilder:FormBuilder, private snackbar: MatSnackBar,private route:ActivatedRoute,private notasservico:NotasService,private router:Router){
   this.gradeeditform=this.formbuilder.group({
     nota: ["",Validators.required]
   })
@@ -24,7 +25,7 @@ constructor(private formbuilder:FormBuilder, private snackbar: MatSnackBar,priva
 ngOnInit(): void {
     this.route.params.subscribe((params)=>{
       this.gradeid=params['id'] ? params['id']: null;
-      this.notasservico.pesquisarPorId(this.gradeid).subscribe((grade:Grade)=>{
+      this.notasservico.getGrade(this.gradeid).subscribe((grade:Grade)=>{
         this.grade=grade;
       })
     })
@@ -40,9 +41,9 @@ OnSubmit(){
 console.log(nota)
 
   const novanota = new Grade
-  (this.gradeid, {studentemail:this.grade.studentemail,value:nota,subjectname:this.grade.subjectname});
+  ({id:this.grade.id,student:this.grade.student,valor:nota,subject:this.grade.subject});
   console.log(novanota)
-  this.notasservico.atualizar(novanota).subscribe(()=>{
+  this.notasservico.editgrade(novanota,Number(this.grade.id)).subscribe(()=>{
     this.snackbar.open(
       `Nota Atualizada com sucesso!`,
       'Ok',

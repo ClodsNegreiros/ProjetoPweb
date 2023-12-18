@@ -14,8 +14,8 @@
               placeholder="Selecione a materia"
               formControlName="materia"
             >
-              <mat-option *ngFor="let materia of materias" [value]="materia.name">
-                {{ materia.name }}
+              <mat-option *ngFor="let materia of materias" [value]="materia">
+                {{ materia.nome }}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="TurmaForm.get('materia')?.dirty && TurmaForm.get('materia')?.hasError('required')">
