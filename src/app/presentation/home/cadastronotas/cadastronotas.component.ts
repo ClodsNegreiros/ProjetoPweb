@@ -37,6 +37,7 @@ export class CadastronotasComponent implements OnInit{
       for( let id  of subject.students!){
        this.studentsservice.getStudentById(Number(id)).subscribe((student:Student)=>{
         this.alunos.push(student);
+        console.log(this.alunos)
        })
       }
     })
@@ -64,6 +65,7 @@ undirty(){
      
       const {valor,aluno}= this.GradeForm.value;
       const nota= new Grade({valor:valor,student:aluno.id,subject:this.materia?.id!});
+      console.log(nota)
      
       this._notasservice.addGrade(nota).subscribe(()=>{
         this._matsnackbar.open(

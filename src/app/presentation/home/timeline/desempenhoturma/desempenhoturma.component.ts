@@ -1,66 +1,60 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Chart } from 'chart.js';
+import { forkJoin } from 'rxjs';
 import { NotasService } from 'src/app/core/services/notas.service';
 import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
+import { StudentService } from 'src/app/core/services/student.service';
 import { SubjectService } from 'src/app/core/services/subject.service';
 import { Grade } from 'src/app/domain/entities/Grade';
+import { Student } from 'src/app/domain/entities/Student';
 import { Subject } from 'src/app/domain/entities/Subject';
 
+
+interface IGrade{
+  aluno:string;
+  nota:number;
+  materia:string;
+}
 @Component({
   selector: 'app-desempenhoturma',
   templateUrl: './desempenhoturma.component.html',
   styleUrls: ['./desempenhoturma.component.css']
 })
 export class DesempenhoturmaComponent implements OnInit{
-  grades: Grade[] = [];
-
+  grades: IGrade[] = [];
+  userlogger= JSON.parse(window.localStorage.getItem("user") ?? "")
+  aluno?:string;
+  materia?:string;
   displayedColumns: string[] = ['aluno', 'nota','materia', 'actions'];
 
   constructor(
     private notaservice : NotasService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,private studentsservice:StudentService,
+    private subjectservice :SubjectService
   ) {}
 
   ngOnInit(): void {
-    this.notaservice.getGrades().subscribe((grades:Grade[])=>{
-      this.grades=grades;
-    })
+    this.notaservice.getgradebysubject(Number(this.userlogger.subject!)).subscribe((grades: Grade[]) => {
+      const observables = grades.map((grade) =>
+        forkJoin([
+          this.studentsservice.getStudentById(grade.student!),
+          this.subjectservice.getSubjectById(grade.subject!)
+        ])
+      );
+
+      forkJoin(observables).subscribe((results: [Student, Subject][]) => {
+        this.grades = results.map(([student, subject], index) => ({
+          nota: grades[index].valor!,
+          aluno: student.nome!,
+          materia: subject.nome!
+        }));
+      });
+    });
   }
 
   deleteSubject(subjectId: string) {
-    this.notaservice.deletegrade(Number(subjectId)).subscribe(
-      () => {
-        const indexToRemove = this.grades.findIndex(value => value.id === Number(subjectId));
-        if (indexToRemove > -1) {
-          this.grades.splice(indexToRemove, 1);
-          this._snackBar.open(
-            `A matéria foi excluída com sucesso.`,
-            'Ok',
-            {
-              horizontalPosition: 'right',
-              verticalPosition: 'top',
-              duration: 4000,
-            }
-          );
-          this.notaservice.getGrades().subscribe((grades:Grade[])=>{
-            this.grades=grades;
-          })
-        }
-      },
-      (error) => {
-        console.error('Erro ao excluir a matéria', error);
-        this._snackBar.open(
-          `Erro ao excluir a matéria. Por favor, tente novamente.`,
-          'Ok',
-          {
-            horizontalPosition: 'right',
-            verticalPosition: 'top',
-            duration: 4000,
-          }
-        );
-      }
-    );
+   
   }
 
 }

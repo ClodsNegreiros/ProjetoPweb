@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { forkJoin } from 'rxjs';
 import { NotasService } from 'src/app/core/services/notas.service';
 import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
 import { SubjectService } from 'src/app/core/services/subject.service';
@@ -29,7 +30,7 @@ export class NotasComponent implements OnInit{
 
 
   constructor(private notasservico:NotasService,private subjectservice:SubjectService) {
-    this.notas=[];
+    this.notas=[]
   }
 
   applyFilter(event: Event) {
@@ -38,16 +39,19 @@ export class NotasComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(this.userlogged.id);
-    this.notasservico.findbystudent(this.userlogged.id).subscribe((grades:Grade[])=>{
-    
-    console.log(grades);
-      for(let grade of grades){
-        this.subjectservice.getSubjectById(grade.subject!).subscribe((subject:Subject)=>{
-          this.notas.push({nota:grade.valor!, materia:subject.nome!})
-        })
-      }
-    })
-    console.log(this.dataSource= new MatTableDataSource(this.notas));
+    this.notasservico.findbystudent(this.userlogged.id).subscribe((grades: Grade[]) => {
+      const observables = grades.map((grade) =>
+        this.subjectservice.getSubjectById(grade.subject!)
+      );
+      forkJoin(observables).subscribe((subjects: Subject[]) => {
+        this.notas = grades.map((grade, index) => ({
+          nota: grade.valor!,
+          materia: subjects[index].nome!,
+        }));
+  
+        this.dataSource = new MatTableDataSource(this.notas);
+      });
+    });
   }
+
 }
