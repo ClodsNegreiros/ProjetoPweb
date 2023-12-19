@@ -38,23 +38,6 @@ OnSubmit(){
     return
   }
   const {nota}= this.gradeeditform.value;
-console.log(nota)
-
-  const novanota = new Grade
-  ({id:this.grade.id,student:this.grade.student,valor:nota,subject:this.grade.subject});
-  console.log(novanota)
-  this.notasservico.editgrade(novanota,Number(this.grade.id)).subscribe(()=>{
-    this.snackbar.open(
-      `Nota Atualizada com sucesso!`,
-      'Ok',
-      {
-        horizontalPosition: 'right',
-        verticalPosition: 'top',
-        duration: 4000,
-      }
-    );
-    this.router.navigate(["/home"]);
-  })
 
 }
 

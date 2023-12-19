@@ -3,18 +3,18 @@ import { IStudent, Student } from "./Student";
 
 export interface IGrade {
   id?:number;
-  valor: string;
-  student: string;
-  subject: string;
+  valor: number;
+  student: number;
+  subject: number;
 }
 
 export class Grade {
   id?: number;
-  valor?: string;
-  student?:Student;
-  subject?: Subject;
+  valor?: number;
+  student?:number;
+  subject?: number;
 
-  constructor(grade: Grade = {valor: '', student:{},subject:{}}) {
+  constructor(grade:IGrade) {
     this.valor = grade.valor;
     this.subject =grade.subject;
     this.student = grade.student;

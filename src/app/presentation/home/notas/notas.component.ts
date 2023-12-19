@@ -3,14 +3,15 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NotasService } from 'src/app/core/services/notas.service';
 import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
+import { SubjectService } from 'src/app/core/services/subject.service';
 import { Grade } from 'src/app/domain/entities/Grade';
 import { Student } from 'src/app/domain/entities/Student';
 import { Subject } from 'src/app/domain/entities/Subject';
 import { Teacher } from 'src/app/domain/entities/Teacher';
 
 export interface IGradeData{
-  nota?:string;
-  materia?:Subject;
+  nota:number;
+  materia:string;
 }
 
 
@@ -22,14 +23,13 @@ export interface IGradeData{
 export class NotasComponent implements OnInit{
 
   displayedColumns: string[] = ["Materia","Nota"];
-  dataSource: MatTableDataSource<IGradeData>;
-  userlogged:Teacher | Student =JSON.parse(window.localStorage.getItem("user")?? "");
+  dataSource: MatTableDataSource<IGradeData>=new MatTableDataSource();
+  userlogged =JSON.parse(window.localStorage.getItem("user")?? "");
   notas:IGradeData[];
 
 
-  constructor(private notasservico:NotasService) {
-    this.notas=[]
-    this.dataSource = new MatTableDataSource();
+  constructor(private notasservico:NotasService,private subjectservice:SubjectService) {
+    this.notas=[];
   }
 
   applyFilter(event: Event) {
@@ -38,16 +38,16 @@ export class NotasComponent implements OnInit{
   }
 
   ngOnInit(): void {
-      this.notasservico.findbystudent(Number(this.userlogged.id)).subscribe((grades:Grade[])=>{
-        
-        grades.map((grade:Grade)=>{
-          this.notas.push({nota:grade.valor,materia:grade.subject})
+    console.log(this.userlogged.id);
+    this.notasservico.findbystudent(this.userlogged.id).subscribe((grades:Grade[])=>{
+    
+    console.log(grades);
+      for(let grade of grades){
+        this.subjectservice.getSubjectById(grade.subject!).subscribe((subject:Subject)=>{
+          this.notas.push({nota:grade.valor!, materia:subject.nome!})
         })
-      })
+      }
+    })
+    console.log(this.dataSource= new MatTableDataSource(this.notas));
   }
-
-
-
-
 }
-

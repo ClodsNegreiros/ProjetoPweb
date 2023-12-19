@@ -21,10 +21,10 @@ export class CadastronotasComponent implements OnInit{
   materia?:Subject;
   Notas: Grade[] = []
   alunos:Student[]=[]
-  logged= JSON.parse(window.localStorage.getItem("user")??"").subject;
+  logged= JSON.parse(window.localStorage.getItem("user")??"");
   GradeForm: FormGroup;
 
-  constructor(_router:Router,private _matsnackbar:MatSnackBar,private subjectservice:SubjectService , private _notasservice:NotasService,private studentsservice:StudentService,private _FormBuilder:FormBuilder){
+  constructor(_router:Router,private _matsnackbar:MatSnackBar,private subjectservice:SubjectService , private _notasservice:NotasService,private teacherservice:TeacherService,private studentsservice: StudentService,private _FormBuilder:FormBuilder){
     this.GradeForm= this._FormBuilder.group({
       "valor":['',[Validators.required]],
       "aluno":['',[Validators.required]]
@@ -32,8 +32,13 @@ export class CadastronotasComponent implements OnInit{
   }
 
    ngOnInit(): void {
-    this.subjectservice.getSubjectById(this.logged.id).subscribe((subject :Subject)=>{
-        this.alunos=subject.student ?? []
+    this.subjectservice.getSubjectById(this.logged.subject).subscribe((subject:Subject)=>{
+      this.materia=subject;
+      for( let id  of subject.students!){
+       this.studentsservice.getStudentById(Number(id)).subscribe((student:Student)=>{
+        this.alunos.push(student);
+       })
+      }
     })
    }
 
@@ -58,7 +63,7 @@ undirty(){
     if(!this.GradeForm.invalid){
      
       const {valor,aluno}= this.GradeForm.value;
-      const nota= new Grade({valor:valor,student:aluno,subject:this.logged});
+      const nota= new Grade({valor:valor,student:aluno.id,subject:this.materia?.id!});
      
       this._notasservice.addGrade(nota).subscribe(()=>{
         this._matsnackbar.open(

@@ -35,5 +35,9 @@ export class NotasService {
     return this.httpclient.get<Grade[]>(`${this.endpoint}/student/${id}`)
   }
 
+  getgradebysubject(idsubject:number):Observable<Grade[]>{
+    return this.httpclient.get<Grade[]>(`${this.endpoint}/grades/getbysubject/${idsubject}`)
+  }
+
 
 }
