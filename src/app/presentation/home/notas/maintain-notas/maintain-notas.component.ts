@@ -12,7 +12,7 @@ import { Grade } from 'src/app/domain/entities/Grade';
   styleUrls: ['./maintain-notas.component.css']
 })
 export class MaintainNotasComponent implements OnInit {
-grade!:Grade;
+grade?:Grade;
 gradeid!:any
 gradeeditform : FormGroup
 
@@ -38,6 +38,22 @@ OnSubmit(){
     return
   }
   const {nota}= this.gradeeditform.value;
+
+  const grade = new Grade({id:this.gradeid,valor:Number(nota),student:this.grade?.student!,subject:this.grade?.subject!})
+
+
+  this.notasservico.editgrade(grade,this.gradeid).subscribe(()=>{
+    this.snackbar.open(
+      `Nota atualizada com sucesso!`,
+      'Ok',
+      {
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        duration: 4000,
+      }
+    )
+    this.router.navigate(["/home"])
+  })
 
 }
 

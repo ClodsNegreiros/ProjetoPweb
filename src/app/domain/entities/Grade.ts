@@ -15,6 +15,7 @@ export class Grade {
   subject?: number;
 
   constructor(grade:IGrade) {
+    this.id=grade.id;
     this.valor = grade.valor;
     this.subject =grade.subject;
     this.student = grade.student;

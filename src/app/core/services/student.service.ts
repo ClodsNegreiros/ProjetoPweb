@@ -46,4 +46,8 @@ export class StudentService {
    return  this.httpClient.put<Student>(`${this.StudentEndpoint}/addsubject?idstudent=${student}&idsubject=${materia}`,{});
   }
 
+  getstudentsbysubject(idsubject:number):Observable<Student[]>{
+    return this.httpClient.get<Student[]>(`${this.StudentEndpoint}/studentsbysubject/${idsubject}`)
+  }
+
 }

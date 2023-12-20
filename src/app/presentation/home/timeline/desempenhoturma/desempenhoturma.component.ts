@@ -9,12 +9,15 @@ import { SubjectService } from 'src/app/core/services/subject.service';
 import { Grade } from 'src/app/domain/entities/Grade';
 import { Student } from 'src/app/domain/entities/Student';
 import { Subject } from 'src/app/domain/entities/Subject';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 
 interface IGrade{
   aluno:string;
   nota:number;
   materia:string;
+  id:number;
 }
 @Component({
   selector: 'app-desempenhoturma',
@@ -31,7 +34,8 @@ export class DesempenhoturmaComponent implements OnInit{
   constructor(
     private notaservice : NotasService,
     private _snackBar: MatSnackBar,private studentsservice:StudentService,
-    private subjectservice :SubjectService
+    private subjectservice :SubjectService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -47,14 +51,27 @@ export class DesempenhoturmaComponent implements OnInit{
         this.grades = results.map(([student, subject], index) => ({
           nota: grades[index].valor!,
           aluno: student.nome!,
-          materia: subject.nome!
+          materia: subject.nome!,
+          id:grades[index].id!
         }));
       });
     });
   }
 
-  deleteSubject(subjectId: string) {
-   
+  deletegrade(gradeId: number) {
+
+   this.notaservice.deletegrade(gradeId).subscribe(()=>{
+    this._snackBar.open(
+      `Nota excluída com sucesso!`,
+      'Ok',
+      {
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        duration: 4000,
+      }
+    );
+   })
   }
+
 
 }

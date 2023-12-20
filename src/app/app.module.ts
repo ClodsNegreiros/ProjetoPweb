@@ -10,6 +10,7 @@ import { MaintainTeacherComponent } from './presentation/teacher/maintain-teache
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { FirestoreModule } from 'src/firestore/firestore.module';
+import { InterceptorsModule } from './interceptors/interceptors.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { FirestoreModule } from 'src/firestore/firestore.module';
     BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
-    FirestoreModule
+    FirestoreModule,
+    InterceptorsModule
   ],
   exports:[
     FlexLayoutModule
