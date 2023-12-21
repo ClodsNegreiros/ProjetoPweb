@@ -32,8 +32,8 @@ export class AvisosalunoComponent {
       this.teachersid = teachers.map(x => x.id!);
       this.teachersnome = teachers.map(x => x.nome!);
       this.avisosservice.getavisosbyteachers(this.teachersid).subscribe((avisos: Aviso[]) => {
+        console.log(this.teachersnome);
         this.avisos = avisos.map(aviso => {
-          console.log(aviso.teacher);
           const professorName = teachers.find(teacher => teacher.id! === aviso.teacher!)?.nome! || "Professor Desconhecido";
           return { header: aviso.header!, text: aviso.text!, hora: aviso.hora!, professor: professorName! };
         });
