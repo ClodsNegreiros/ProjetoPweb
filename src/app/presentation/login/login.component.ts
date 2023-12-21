@@ -63,12 +63,26 @@ export class LoginComponent {
           throw new Error('Erro ao tentar autenticar estudante.');
         }
       }
-
+      this._snackBar.open(
+        `Login efetuado com sucesso!`,
+        'Ok',
+        {
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          duration: 4000,
+        }
+      );
       this._router.navigate(['/home']);
     } catch (error) {
       this._snackBar.open(
-        `Senha/email incorreto. Por favor, tente novamente.`,
-        )
+        `Senha ou email incorreto! Tente novamente.`,
+        'Ok',
+        {
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          duration: 4000,
+        }
+      );
       }
   }
 

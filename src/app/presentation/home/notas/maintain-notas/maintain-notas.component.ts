@@ -39,7 +39,7 @@ OnSubmit(){
   }
   const {nota}= this.gradeeditform.value;
 
-  const grade = new Grade({id:this.gradeid,valor:Number(nota),student:this.grade?.student!,subject:this.grade?.subject!})
+  const grade = new Grade({valor:Number(nota),student:this.grade?.student!,subject:this.grade?.subject!})
 
 
   this.notasservico.editgrade(grade,this.gradeid).subscribe(()=>{
