@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { NotasService } from 'src/app/core/services/notas.service';
 import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
 import { Grade } from 'src/app/domain/entities/Grade';
 
@@ -11,11 +12,11 @@ import { Grade } from 'src/app/domain/entities/Grade';
   styleUrls: ['./maintain-notas.component.css']
 })
 export class MaintainNotasComponent implements OnInit {
-grade!:Grade;
+grade?:Grade;
 gradeid!:any
 gradeeditform : FormGroup
 
-constructor(private formbuilder:FormBuilder, private snackbar: MatSnackBar,private route:ActivatedRoute,private notasservico:NotasFirebaseService,private router:Router){
+constructor(private formbuilder:FormBuilder, private snackbar: MatSnackBar,private route:ActivatedRoute,private notasservico:NotasService,private router:Router){
   this.gradeeditform=this.formbuilder.group({
     nota: ["",Validators.required]
   })
@@ -24,7 +25,7 @@ constructor(private formbuilder:FormBuilder, private snackbar: MatSnackBar,priva
 ngOnInit(): void {
     this.route.params.subscribe((params)=>{
       this.gradeid=params['id'] ? params['id']: null;
-      this.notasservico.pesquisarPorId(this.gradeid).subscribe((grade:Grade)=>{
+      this.notasservico.getGrade(this.gradeid).subscribe((grade:Grade)=>{
         this.grade=grade;
       })
     })
@@ -37,22 +38,21 @@ OnSubmit(){
     return
   }
   const {nota}= this.gradeeditform.value;
-console.log(nota)
 
-  const novanota = new Grade
-  (this.gradeid, {studentemail:this.grade.studentemail,value:nota,subjectname:this.grade.subjectname});
-  console.log(novanota)
-  this.notasservico.atualizar(novanota).subscribe(()=>{
+  const grade = new Grade({id:this.gradeid,valor:Number(nota),student:this.grade?.student!,subject:this.grade?.subject!})
+
+
+  this.notasservico.editgrade(grade,this.gradeid).subscribe(()=>{
     this.snackbar.open(
-      `Nota Atualizada com sucesso!`,
+      `Nota atualizada com sucesso!`,
       'Ok',
       {
         horizontalPosition: 'right',
         verticalPosition: 'top',
         duration: 4000,
       }
-    );
-    this.router.navigate(["/home"]);
+    )
+    this.router.navigate(["/home"])
   })
 
 }

@@ -25,8 +25,8 @@
               placeholder="Selecione o aluno"
               formControlName="aluno"
             >
-              <mat-option *ngFor="let aluno of alunos" [value]="aluno.email">
-                {{ aluno.email}}
+              <mat-option *ngFor="let aluno of alunos" [value]="aluno">
+                {{ aluno.nome}}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="GradeForm.get('aluno')?.dirty && GradeForm.get('aluno')?.hasError('required')">

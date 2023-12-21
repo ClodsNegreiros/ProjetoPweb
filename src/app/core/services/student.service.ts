@@ -34,12 +34,20 @@ export class StudentService {
     return this.httpClient.get<Student>(`${this.StudentEndpoint}/${StudentId}`)
   }
 
-  editStudent(Student: Student, idStudent:number): Observable<Student> {
-    return this.httpClient.put<Student>(`${this.StudentEndpoint}/${idStudent}`, Student)
+  editStudent(student: Student, idStudent:number): Observable<Student> {
+    return this.httpClient.put<Student>(`${this.StudentEndpoint}/${idStudent}`, student)
   }
 
   getStudentbyemail(email:string):Observable<Student[]>{
     return this.httpClient.get<Student[]>(`${this.StudentEndpoint}/byemail?email=${email}`);
+  }
+
+  inseremateria(student:string, materia: string) :Observable<Object>{
+   return  this.httpClient.put<Student>(`${this.StudentEndpoint}/addsubject?idstudent=${student}&idsubject=${materia}`,{});
+  }
+
+  getstudentsbysubject(idsubject:number):Observable<Student[]>{
+    return this.httpClient.get<Student[]>(`${this.StudentEndpoint}/studentsbysubject/${idsubject}`)
   }
 
 }

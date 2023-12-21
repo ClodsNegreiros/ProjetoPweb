@@ -6,7 +6,7 @@ export interface IStudent {
   nome?: string;
   idade?: string;
   email?: string;
-  subjects?: string[];
+  subjects?: Subject[];
   grades?:Grade[];
   password?: string;
   telefone?:string;
@@ -19,7 +19,7 @@ export class Student {
   nome?: string;
   idade?: string;
   email?: string;
-  subjects?: string[]
+  subjects?: Subject[]
   grades?:Grade[]
   password?:string;
   telefone?:string;

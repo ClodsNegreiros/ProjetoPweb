@@ -7,7 +7,7 @@ import { Grade } from 'src/app/domain/entities/Grade';
 })
 export class NotasService {
 
-  endpoint:string = "http://localhost:3000/grades"
+  endpoint:string = "http://localhost:8080/grades"
 
   constructor(private httpclient:HttpClient) { }
 
@@ -29,6 +29,14 @@ export class NotasService {
 
   editgrade(grade:Grade,id:number):Observable<Grade>{
     return this.httpclient.put<Grade>(`${this.endpoint}/${id}`,grade)
+  }
+
+  findbystudent(id:number):Observable<Grade[]>{
+    return this.httpclient.get<Grade[]>(`${this.endpoint}/student/${id}`)
+  }
+
+  getgradebysubject(idsubject:number):Observable<Grade[]>{
+    return this.httpclient.get<Grade[]>(`${this.endpoint}/getbysubject/${idsubject}`)
   }
 
 

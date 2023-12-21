@@ -10,7 +10,7 @@ export class TeacherService {
 
  
 
-  TeacherEndpoint: string = 'http://localhost:3000/teachers';
+  TeacherEndpoint: string = 'http://localhost:8080/teachers';
 
   teachers: Teacher[] = [];
   //private nextId: number = 1;
@@ -37,11 +37,11 @@ export class TeacherService {
   }
 
   editTeacher(Teacher: Teacher, idTeacher:number): Observable<Teacher> {
-    return this.httpClient.patch<Teacher>(`${this.TeacherEndpoint}/${idTeacher}`, Teacher)
+    return this.httpClient.put<Teacher>(`${this.TeacherEndpoint}/${idTeacher}`, Teacher)
   }
 
   getTeacherbyemail(email:string):Observable<Teacher[]>{
-    return this.httpClient.get<Teacher[]>(`${this.TeacherEndpoint}/?email=${email}`);
+    return this.httpClient.get<Teacher[]>(`${this.TeacherEndpoint}/byemail?email=${email}`);
   }
 
 }

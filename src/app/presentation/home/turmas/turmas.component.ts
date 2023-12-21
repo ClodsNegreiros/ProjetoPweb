@@ -29,7 +29,7 @@ export class TurmasComponent implements OnInit{
 
   ngOnInit(): void {
       this._subjectservice.getSubjects().subscribe((subject:Subject[])=>{
-        this.materias=subject;
+     this.materias=subject
       })
   }
 
@@ -42,13 +42,8 @@ export class TurmasComponent implements OnInit{
     
     const user = JSON.parse(window.localStorage.getItem('user') ?? '');
 
-    this.studentservice.getStudentById(user.id!).subscribe((student:Student)=>{
-      const aluno = new Student({id:student.id,email:student.email,nome:student.nome,password:student.password,subjects:student.subjects ?? []})
-      aluno.subjects?.push(materia)
-
-      console.log(aluno)
-        
-    this.studentservice.editStudent(aluno,user.id!).subscribe(()=>{
+    
+    this.studentservice.inseremateria(user.id!,materia.id).subscribe(()=>{
       this._matsnackbar.open(
         
         `Inscrito na turma com sucesso!`,
@@ -59,10 +54,7 @@ export class TurmasComponent implements OnInit{
           duration: 4000,
         }
       )
-    });
-      
     })
-
 
  
 

@@ -21,13 +21,13 @@ export class UserService {
   }
 
    getTeacherbyemail(email:string):Observable<Teacher[]>{
-    return this.httpclient.get<Teacher[]>(`http://localhost:8080/teachers?email=${email}`)
+    return this.httpclient.get<Teacher[]>(`http://localhost:8080/teachers/byemail?email=${email}`)
   }
 
   getUserRole(email: string): Observable<string> {
     return this.studentservice.getStudentbyemail(email).pipe(
       map((student: Student[]) => {
-        if (student.length > 0) {
+        if (student.length > 0 && student as Student) {
           return 'student';
         } else {
           return 'teacher';

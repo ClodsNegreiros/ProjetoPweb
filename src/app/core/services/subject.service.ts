@@ -11,7 +11,7 @@ import { Subject } from './../../domain/entities/Subject';
 })
 export class SubjectService {
 
-  subjectEndpoint: string = 'http://localhost:3000/subjects';
+  subjectEndpoint: string = 'http://localhost:8080/subjects';
 
   subjects: Subject[] = [];
   //private nextId: number = 1;

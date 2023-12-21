@@ -1,15 +1,18 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { forkJoin } from 'rxjs';
 import { NotasService } from 'src/app/core/services/notas.service';
 import { NotasFirebaseService } from 'src/app/core/services/notasfirebase.service';
+import { SubjectService } from 'src/app/core/services/subject.service';
 import { Grade } from 'src/app/domain/entities/Grade';
 import { Student } from 'src/app/domain/entities/Student';
+import { Subject } from 'src/app/domain/entities/Subject';
 import { Teacher } from 'src/app/domain/entities/Teacher';
 
 export interface IGradeData{
-  nota:string;
-  materia:string
+  nota:number;
+  materia:string;
 }
 
 
@@ -21,14 +24,13 @@ export interface IGradeData{
 export class NotasComponent implements OnInit{
 
   displayedColumns: string[] = ["Materia","Nota"];
-  dataSource: MatTableDataSource<IGradeData>;
-  userlogged:Teacher | Student =JSON.parse(window.localStorage.getItem("user")?? "");
+  dataSource: MatTableDataSource<IGradeData>=new MatTableDataSource();
+  userlogged =JSON.parse(window.localStorage.getItem("user")?? "");
   notas:IGradeData[];
 
 
-  constructor(private notasservico:NotasFirebaseService) {
+  constructor(private notasservico:NotasService,private subjectservice:SubjectService) {
     this.notas=[]
-    this.dataSource = new MatTableDataSource();
   }
 
   applyFilter(event: Event) {
@@ -37,24 +39,19 @@ export class NotasComponent implements OnInit{
   }
 
   ngOnInit(): void {
-      this.notasservico.listar().subscribe(
-        (grades:Grade[])=>{
-
-         const user: Student = JSON.parse( window.localStorage.getItem('user') ?? '')
-          console.log(grades);
-          grades.map((grade:Grade)=>{
-            if(user.email===grade.studentemail){
-              this.notas.push({nota:grade.value,materia:grade.subjectname});
-              this.dataSource= new MatTableDataSource(this.notas)
-            }
-          })
-         this.dataSource=new MatTableDataSource(this.notas)
-        }
-      )
+    this.notasservico.findbystudent(this.userlogged.id).subscribe((grades: Grade[]) => {
+      const observables = grades.map((grade) =>
+        this.subjectservice.getSubjectById(grade.subject!)
+      );
+      forkJoin(observables).subscribe((subjects: Subject[]) => {
+        this.notas = grades.map((grade, index) => ({
+          nota: grade.valor!,
+          materia: subjects[index].nome!,
+        }));
+  
+        this.dataSource = new MatTableDataSource(this.notas);
+      });
+    });
   }
 
-
-
-
 }
-

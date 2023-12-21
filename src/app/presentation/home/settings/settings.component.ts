@@ -19,11 +19,11 @@ export class SettingsComponent implements OnInit{
     this.logged= JSON.parse(window.localStorage.getItem('user') ?? '');
 
     this.formsettings= this.formbuilder.group({
-      "nome":[JSON.parse(window.localStorage.getItem('user') ?? '').name,Validators.required],
+      "nome":[JSON.parse(window.localStorage.getItem('user') ?? '').nome,Validators.required],
       "instituicao":[JSON.parse(window.localStorage.getItem('user') ?? '').instituicao,Validators.required],
       "tipo":[JSON.parse(window.localStorage.getItem('user') ?? '').type
       ,Validators.required],
-      "idade":[JSON.parse(window.localStorage.getItem('user') ?? '').age,Validators.required],
+      "idade":[JSON.parse(window.localStorage.getItem('user') ?? '').idade,Validators.required],
       "email":[this.logged?.email,Validators.required],
       "endereco":[JSON.parse(window.localStorage.getItem('user') ?? '').endereco,Validators.required],
       "telefone":[JSON.parse(window.localStorage.getItem('user') ?? '').telefone,Validators.required]
