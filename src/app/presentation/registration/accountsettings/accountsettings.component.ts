@@ -77,7 +77,19 @@ async OnSubmit(){
         }
       );
       this.router.navigate(['/login'])
-    })
+    },
+    (error)=>{
+      this.snackbar.open(
+        error,
+        'Ok',
+        {
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          duration: 4000,
+        }
+      );
+    }
+    )
   }
 
   

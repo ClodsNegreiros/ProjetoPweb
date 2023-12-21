@@ -14,7 +14,7 @@ import { Subject } from 'src/app/domain/entities/Subject';
   styleUrls: ['./turmas.component.css']
 })
 export class TurmasComponent implements OnInit{
-
+  userlogged=JSON.parse(window.localStorage.getItem("user")??"")
   TurmaForm: FormGroup;
   materias:Subject[]=[];
   student?:Student;
@@ -54,6 +54,8 @@ export class TurmasComponent implements OnInit{
           duration: 4000,
         }
       )
+      this.userlogged.subjects.push(materia.id)
+      window.localStorage.setItem("user",JSON.stringify(this.userlogged))
     })
 
  

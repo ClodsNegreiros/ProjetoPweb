@@ -10,6 +10,7 @@ import { Grade } from 'src/app/domain/entities/Grade';
 import { Student } from 'src/app/domain/entities/Student';
 import { Subject } from 'src/app/domain/entities/Subject';
 import { ChangeDetectorRef } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 
@@ -30,6 +31,7 @@ export class DesempenhoturmaComponent implements OnInit{
   aluno?:string;
   materia?:string;
   displayedColumns: string[] = ['aluno', 'nota','materia', 'actions'];
+  datasource= new MatTableDataSource<IGrade>();
 
   constructor(
     private notaservice : NotasService,
@@ -54,6 +56,7 @@ export class DesempenhoturmaComponent implements OnInit{
           materia: subject.nome!,
           id:grades[index].id!
         }));
+        this.datasource= new MatTableDataSource(this.grades);
       });
     });
   }
@@ -70,6 +73,12 @@ export class DesempenhoturmaComponent implements OnInit{
         duration: 4000,
       }
     );
+    for(let index=0 ; index <this.grades.length; index++){
+      if(this.grades[index].id==gradeId){
+        this.grades.splice(index,1);
+        this.datasource= new MatTableDataSource(this.grades);
+      }
+    }
    })
   }
 
