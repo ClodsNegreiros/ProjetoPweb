@@ -1,0 +1,20 @@
+
+<div *ngFor="let aviso of avisos">
+
+    <mat-card id="container-timeline" >
+    
+        <div class="card mt-5">
+            <h5 class="card-header">{{aviso.professor}} </h5>
+            <div class="card-body">
+              <h3 class="card-title">{{aviso.header}}</h3>
+              <p class="card-text">{{aviso.text}}</p>
+            </div>
+            <div class="card-footer text-body-secondary">
+              {{aviso.hora}}
+              </div>
+          </div>
+    
+      </mat-card>
+    
+      </div>
+    

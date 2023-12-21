@@ -14,12 +14,11 @@ import { Aviso } from 'src/app/domain/entities/Aviso';
 export class CadastroavisosComponent{
 
 nometeacher:string=JSON.parse(window.localStorage.getItem('user') ?? '').email;
-
+userlogged = JSON.parse(window.localStorage.getItem("user") ?? "")
 FormAviso:FormGroup;
 
 constructor(private formbuilder:FormBuilder,private snackbar:MatSnackBar,private avisoservice: AvisoService){
   this.FormAviso= this.formbuilder.group({
-    "teacher":[this.nometeacher,Validators.required],
     "header":["",Validators.required],
     "text":["",Validators.required]
     }
@@ -40,9 +39,9 @@ async OnSubmit(){
   this.checkvalidility();
 
   if(!this.FormAviso.invalid){
-    const {teacher,header,text}= this.FormAviso.value;
+    const {header,text}= this.FormAviso.value;
 
-    const aviso:Aviso= new Aviso({teacher:teacher,
+    const aviso:Aviso= new Aviso({teacher:this.userlogged.id,
     header:header,
     text:text});
 

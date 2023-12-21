@@ -1,8 +1,12 @@
 
 <mat-tab-group >
-    <mat-tab label="Avisos">
+    <mat-tab label="Avisos" *ngIf="type=='professor' ">
         <app-avisos></app-avisos>
     </mat-tab>
+    <mat-tab label="Avisos" *ngIf="type=='aluno' ">
+        <app-avisosaluno></app-avisosaluno>
+    </mat-tab>
+
     <mat-tab label="Horário"  >
         <app-horario></app-horario>
     </mat-tab>

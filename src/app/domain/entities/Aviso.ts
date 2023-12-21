@@ -1,14 +1,14 @@
 import { Teacher } from "./Teacher";
 
 export interface IAviso{
-    teacher?:string;
+    teacher?:number;
     header?:string;
     text?:string;
     hora?:string;
 }
 
 export class Aviso{
-    teacher?:string;
+    teacher?:number;
     header?:string;
     text?:string;
     hora?:string;
