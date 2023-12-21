@@ -40,4 +40,8 @@ export class SubjectService {
   editSubject(subject: Subject, idsubject:number): Observable<Subject> {
     return this.httpClient.patch<Subject>(`${this.subjectEndpoint}/${idsubject}`, subject)
   }
+
+  getsubjectsbystudent(id:number):Observable<Subject[]>{
+    return this.httpClient.get<Subject[]>(`${this.subjectEndpoint}/student/${id}`)
+  }
 }

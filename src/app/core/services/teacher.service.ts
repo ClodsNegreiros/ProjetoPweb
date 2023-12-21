@@ -44,4 +44,10 @@ export class TeacherService {
     return this.httpClient.get<Teacher[]>(`${this.TeacherEndpoint}/byemail?email=${email}`);
   }
 
+
+  getTeachersbysubjects(ids:number[]):Observable<Teacher[]>{
+    const params= {ids}
+    return this.httpClient.get<Teacher[]>(`${this.TeacherEndpoint}/subjects`,{params});
+  }
+
 }

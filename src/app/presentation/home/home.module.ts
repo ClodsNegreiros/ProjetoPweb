@@ -41,6 +41,7 @@ import { firebaseConfig } from 'src/firebase.config';
 import { FirestoreModule } from 'src/firestore/firestore.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MaintainNotasComponent } from './notas/maintain-notas/maintain-notas.component';
+import { AvisosalunoComponent } from './timeline/avisosaluno/avisosaluno.component';
 
 
 
@@ -50,7 +51,7 @@ import { MaintainNotasComponent } from './notas/maintain-notas/maintain-notas.co
 @NgModule({
   declarations: [HomeComponent, TimelineComponent,FaltasComponent,
     AvisosComponent,HorarioComponent,SidebarComponent, NotasComponent, TurmasComponent,
-     DesempenhoComponent, SettingsComponent, DesempenhoturmaComponent, CadastronotasComponent, CadastroavisosComponent, AlunosComponent, MaintainNotasComponent],
+     DesempenhoComponent, SettingsComponent, DesempenhoturmaComponent, CadastronotasComponent, CadastroavisosComponent, AlunosComponent, MaintainNotasComponent, AvisosalunoComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(HomeRoutes),

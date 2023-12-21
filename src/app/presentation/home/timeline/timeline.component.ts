@@ -22,7 +22,7 @@ interface Itabs{
   styleUrls: ['./timeline.component.css']
 })
 export class TimelineComponent implements OnInit {
-
+type =  JSON.parse(window.localStorage.getItem("user")?? "").type
 userlogged?:IUser;
 tabs?:Itabs
 

@@ -8,7 +8,7 @@ import { Aviso } from 'src/app/domain/entities/Aviso';
 })
 export class AvisoService {
 
-  avisoendpoint='http://localhost:3000/avisos';
+  avisoendpoint='http://localhost:8080/avisos';
 
   constructor(private httpclient:HttpClient) { }
 
@@ -36,6 +36,15 @@ export class AvisoService {
 
   editaviso(aviso:Aviso,id:string):Observable<Aviso>{
     return this.httpclient.put<Aviso>(`${this.avisoendpoint}/${id}`,aviso);
+  }
+
+  getavisobyteacher(id:number):Observable<Aviso[]>{
+    return this.httpclient.get<Aviso[]>(`${this.avisoendpoint}/teacher/${id}`)
+  }
+
+  getavisosbyteachers(ids:number[]):Observable<Aviso[]>{
+     const params = {ids}
+    return this.httpclient.get<Aviso[]>(`${this.avisoendpoint}/teachers`,{params}) 
   }
 
 }

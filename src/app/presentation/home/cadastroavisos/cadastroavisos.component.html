@@ -11,19 +11,6 @@
           <mat-form-field appearance="outline">
             <input
               matInput
-              placeholder="teacher"
-              name="teacher"
-              formControlName="teacher"
-              readonly
-            >
-            <mat-error *ngIf="FormAviso.get('teacher')?.dirty && FormAviso.get('teacher')?.hasError('required')">
-              Campo obrigatório
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <input
-              matInput
               placeholder="Insira o texto aqui"
               name="text"
               formControlName="text"

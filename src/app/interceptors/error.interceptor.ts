@@ -4,16 +4,27 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpResponse
+  HttpResponse,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
+import { MessageService } from '../core/services/message.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private messageService: MessageService) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
+    return next.handle(request).pipe(
+      catchError(response => this.treatsWrongAnswer(response))
+    )
+  }
+
+  private treatsWrongAnswer(response: object): Observable<HttpEvent<any>> {
+    if (response instanceof HttpErrorResponse) {
+      this.messageService.showError('Erro: ' + response.message);
+    }
+    return throwError(response);
   }
 }
