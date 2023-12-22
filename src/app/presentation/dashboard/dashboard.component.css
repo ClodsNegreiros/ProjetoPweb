@@ -2,3 +2,16 @@
   margin: 5rem 0;
   color: whitesmoke
 }
+
+.img-rounded{
+  width:140px;
+  border-radius: 100px;
+  height:140px;
+
+}
+
+.img-footer{
+  width:500px;
+  height:500px;
+  margin:auto;
+}
